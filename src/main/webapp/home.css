@@ -26,12 +26,42 @@ html{
     scroll-padding-top: 6.5rem;
     scroll-behavior: smooth;
 }
+section{
+    padding: 2rem 9%;
+
+}
+.buttn{
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--green);
+    color: #fff;
+    padding: .8rem 3rem;
+    font-size: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+}
+.buttn:hover{
+    background: var(--black);
+}
+.heading{
+    text-align: center;
+    color: var(--black);
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 3.5rem;
+}
+.heading span{
+    color: var(--green);
+    text-transform: uppercase;
+}
 .header-1{
     background: #eee;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem 9%;
+    position: relative; /* Add this to establish a stacking context */
+    z-index: 1; /* Set a z-index value */
 }
 .logo{
     color: var(--black);
@@ -76,6 +106,7 @@ html{
     padding: 2rem 9%;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
     position: relative;
+    z-index: 1; /* Set a z-index value */
 }
 .header-2 .navbar a{
     padding: .5rem 1.5rem;
@@ -92,9 +123,388 @@ html{
     color: var(--black);
     padding-left: 1rem;
 }
+/* user profile dropdown */
+.subb-men-wrapp {
+    position: absolute; /* or position: relative; */
+    top: 100%;
+    right: 0%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    z-index: 4; /* Add z-index here */
+}
+.subb-men-wrapp .open-menu{
+    max-height: 400px;
+}
+.subb-men-wrapp.open-menu{
+    background: #f3a8a8;
+    padding: 20px;
+    margin: 10px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.subb-men hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #e9dcdc;
+    margin: 15px 0 10px;
+}
+.subb-men-linkk{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+.subb-men-linkk p{
+    width: 100%;
+    font-size: 15px;
+}
+.subb-men-linkk img{
+    width: 40px;
+    background: #e5e5ee;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.subb-men-linkk span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.subb-men-linkk:hover span{
+    transform: translateX(5px);
+}
+.subb-men-linkk:hover p{
+    font-weight: 600;
+
+}
+.subb-men-wrapp .open-menu{
+    max-height: 400px;
+}
+.subb-men-wrapp.open-menu{
+    background: #f3a8a8;
+    padding: 20px;
+    margin: 10px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.subb-men hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #e9dcdc;
+    margin: 15px 0 10px;
+}
+.subb-men-linkk{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+.subb-men-linkk p{
+    width: 100%;
+    font-size: 15px;
+}
+.subb-men-linkk img{
+    width: 40px;
+    background: #e5e5ee;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.subb-men-linkk span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.subb-men-linkk:hover span{
+    transform: translateX(5px);
+}
+.subb-men-linkk:hover p{
+    font-weight: 600;
+
+}
+.subb-men-wrapp .open-menu{
+    max-height: 400px;
+}
+.subb-men-wrapp.open-menu{
+    background: #f3a8a8;
+    padding: 20px;
+    margin: 10px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.subb-men hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #e9dcdc;
+    margin: 15px 0 10px;
+}
+.subb-men-linkk{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+.subb-men-linkk p{
+    width: 100%;
+    font-size: 15px;
+}
+.subb-men-linkk img{
+    width: 40px;
+    background: #e5e5ee;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.subb-men-linkk span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.subb-men-linkk:hover span{
+    transform: translateX(5px);
+}
+.subb-men-linkk:hover p{
+    font-weight: 600;
+
+}
 .header-2 .icons a:hover{
     color: var(--green);
 }
+/* drop down menu catergary */
+.header-2 .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.header-2 .dropdown-content a{
+    font-size: 1.4rem;
+}
+
+.header-2 .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.header-2 .dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 /* end hader css */
 /* start home css */
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    z-index: 3;
+}
+.home .image{
+    flex: 1 1 40rem;
+    padding-top: 5rem;
+}
+.home .image img{
+    width: 100%;
+}
+.home .contt span{
+    font-size: 3rem;
+    color: #666;
+}
+.home .contt h4{
+    font-size: 5rem;
+    color: var(--black);
+}
+/* end home section */
+/* start catergary */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 10px;
+}
+  
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    font-size: 15px;
+    
+}
+.grid-container > div > a{
+    color: #333;
+}
+
+/* end catergary */
+.product .boxx-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.product .boxx-cont .boxx{
+    flex: 1 1 30rem;
+    text-align: center;
+    padding: 2rem;
+    border: 0.1rem solid rgba(0, 0, 0, .3);
+    border-radius: .5rem;
+    overflow: hidden;
+    position: relative;
+}
+.product .boxx-cont.boxx.img{
+    margin: 5rem 0;
+}
+.product .boxx-cont .boxx .discount{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(0, 255, 0, .1);
+    color: var(--green);
+    padding: .7rem 1rem;
+    font-size: 2rem;
+}
+.product .boxx-cont .boxx .icons{
+    position: absolute;
+    top: 5rem;
+    right: -6rem;
+}
+.product .boxx-cont .boxx:hover .icons{
+    right: 1rem;
+}
+.product .boxx-cont .boxx .icons a{
+    display: block;
+    height: 4.5rem;
+    width: 4.5rem;
+    line-height: 4.5rem;
+    font-size: 1.7rem;
+    color: var(--black);
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    margin-top: .7rem;
+}
+.product .boxx-cont .boxx .icons a:hover{
+    background: var(--green);
+    color: #fff;
+}
+.product .boxx-cont .boxx .price .span{
+    font-size: 1.5rem;
+    color: #999;
+    text-decoration: line-through;
+}
+.product .boxx-cont .boxx .quentity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: o.5rem;
+}
+.product .boxx-cont .boxx .quentity span{
+    padding: .7rem;
+    font-size: 1.7rem;
+}
+.product .boxx-cont .boxx .quentity input{
+    border: .1rem solid rgba(0, 0, 0, .3);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--black);
+    padding: 0.4rem;
+    background: rgba(0, 0, 0, .05);
+}
+.product .boxx-cont .boxx .buttn{
+    display: block;
+}
+
+/* start footer */
+.footer::before {
+    content: "";
+    display: block;
+    height: 9px; /* Adjust the line thickness as needed */
+    width: 100%; /* Adjust the line width as a percentage of the container's width */
+    background-color: rgba(0, 0, 0, .1); /* Adjust the line color as needed */
+    margin-bottom: 20px; /* Optional: Add spacing below the line */
+}
+
+.footer .boxx-cont{
+    display: flex;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+.footer .boxx-cont .boxx{
+    padding: 1rem 0;
+    flex:1 1 25rem;
+}
+.footer .boxx-cont .boxx .share a{
+    padding: 0;
+    height: 4rem;
+    width: 4rem;
+    line-height: 4rem;
+    text-align: center;
+}
+.footer .boxx-cont .boxx h3{
+    font-size: 2.5rem;
+    color: var(--black);
+}
+.footer .boxx-cont .boxx p{
+    font-size: 1.3rem;
+    color: #666;
+    padding: 7rem 0;
+}
+.footer .boxx-cont .boxx .links{
+    padding: 1rem 0;
+}
+.footer .boxx-cont .boxx .links a{
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+.footer .boxx-cont .boxx .links a:hover{
+    text-decoration: underline;
+    color: var(--green);
+}
+.footer .credit{
+    padding: 2.5rem 1rem;
+    border-top: 1rem solid rgba(0, 0, 0, .1);
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+}
+.footer .credit span{
+    color: var(--green);
+}
