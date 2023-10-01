@@ -136,13 +136,14 @@ section{
 }
 .subb-men-wrapp .open-menu{
     max-height: 400px;
+    z-index: 4;
 }
 .subb-men-wrapp.open-menu{
     background: #f3a8a8;
     padding: 20px;
     margin: 10px;
 }
-.user-info{
+.subb-men-wrapp.open-menu.user-info{
     display: flex;
     align-items: center;
 }
@@ -246,7 +247,7 @@ section{
     font-weight: 600;
 
 }
-.subb-men-wrapp .open-menu{
+.subb-men-wrapp.open-menu{
     max-height: 400px;
 }
 .subb-men-wrapp.open-menu{
@@ -327,7 +328,6 @@ section{
     display: block;
 }
 
-
 /* end hader css */
 /* start home css */
 .home{
@@ -335,7 +335,6 @@ section{
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    z-index: 3;
 }
 .home .image{
     flex: 1 1 40rem;
