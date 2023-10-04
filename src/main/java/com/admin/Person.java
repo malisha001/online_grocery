@@ -6,18 +6,27 @@ public class Person {
 	protected String email;
 	protected String password;
 	
-	public Person() {};
-	
 	public Person(int id, String name, String email, String password) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
-	};
-	
-	
+	}
 
-	
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 	
 }

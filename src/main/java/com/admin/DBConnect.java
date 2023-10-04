@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnect {
-	private static String url = "jdbc:mysql://localhost:3306/";
+	private static String url = "jdbc:mysql://localhost:3306/grocery";
 	private static String user = "root";
 	private static String pass = "BinuMySQL";
 	private static Connection con;
