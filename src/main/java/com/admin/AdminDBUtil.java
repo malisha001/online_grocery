@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDBUtil {
+	
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	
 	public static List<Admin> validate(String name, String Email, String password ){
 		
 		ArrayList<Admin> admin = new ArrayList<>();
@@ -15,10 +20,10 @@ public class AdminDBUtil {
 		//validate
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url,user,pass);
-			Statement stmt =con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+
 			String sql = "select * from admin where Name = '"+name+"' and Email = '"+Email+"' and Password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
