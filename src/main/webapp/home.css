@@ -125,6 +125,9 @@ section{
 }
 /* user profile dropdown */
 .subb-men-wrapp {
+    background: #f3a8a8;
+    padding: 0px;
+    margin: 10px;
     position: absolute; /* or position: relative; */
     top: 100%;
     right: 0%;
@@ -132,6 +135,7 @@ section{
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.5s;
+    transition: padding 0.5s;
     z-index: 4; /* Add z-index here */
 }
 .subb-men-wrapp .open-menu{
@@ -323,14 +327,12 @@ section{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 2;
 }
-
-.header-2 .dropdown:hover .dropdown-content {
-    display: block;
-}
-
 /* end hader css */
 /* start home css */
 .home{
+.header-2 .dropdown:hover .dropdown-content {
+    display: block;
+}
     display: flex;
     align-items: center;
     justify-content: center;

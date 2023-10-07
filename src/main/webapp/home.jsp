@@ -1,5 +1,8 @@
+<%@page import="home.items"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,14 @@
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 <body>
+	<jsp:include page="/homes"></jsp:include>
+	<%
+	if(session.getAttribute("username")==null){
+		response.sendRedirect("LoginPage.jsp");
+	}
+		List<items>itemDetails = (List<items>)request.getAttribute("itemDetails");
+		System.out.println(itemDetails);
+	%>
     <!-- header section -->
     <header>
         <div class="header-1">
@@ -47,12 +58,12 @@
                     <div class="subb-men">
                         <div class="user-info">
                             <img src="image/user.png" alt="">
-                            <h2>malisha</h2>
+                            <h2>${username}</h2>
                         </div>
                         <hr>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="LoginPage.jsp" class="subb-men-linkk">
                             <img src="image/setting.png" alt="">
-                            <p>setting</p>
+                            <p>login</p>
                             <span>></span>
                         </a>
                         <a href="#" class="subb-men-linkk">
@@ -194,23 +205,24 @@
                     <a href="#" class="buttn">add to cart</a>
                 </div>
 
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
+				<c:forEach var = "item" items = "${itemDetails}">
+	                <div class="boxx">
+	                    <span class="discount">-33%</span>
+	                    <div class="icons">
+	                        <a href="#"><i class="uil uil-heart-sign"></i></a>
+	                        <a href="#"><i class="uil uil-eye"></i></a>
+	                    </div>
+	                    <img src="image/Banana-Single.jpg" alt="" height="100px">
+	                    <h3>${item.name}</h3>
+	                    <div class="price">$10.0 <span>$13.20</span></div>
+	                    <div class="quentity">
+	                        <span>quentity:</span>
+	                        <input type="number" min="1" max="100" value="1">
+	                        <span>/kg</span>
+	                    </div>
+	                    <a href="#" class="buttn">add to cart</a>
+	                </div>
+				</c:forEach>
                 
             </div>
         </div>
