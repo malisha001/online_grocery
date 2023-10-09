@@ -206,6 +206,9 @@
                 </div>
 
 				<c:forEach var = "item" items = "${itemDetails}">
+                    <form action="AddCartServlet" method="post">
+                        <input type="hidden" name="itemid" value="${item.id}">
+                        
 	                <div class="boxx">
 	                    <span class="discount">-33%</span>
 	                    <div class="icons">
@@ -217,11 +220,12 @@
 	                    <div class="price">$10.0 <span>$13.20</span></div>
 	                    <div class="quentity">
 	                        <span>quentity:</span>
-	                        <input type="number" min="1" max="100" value="1">
+	                        <input type="number" min="1" max="100" value="1" name="quentity">
 	                        <span>/kg</span>
 	                    </div>
-	                    <a href="#" class="buttn">add to cart</a>
+                        <input type="submit" class="buttn" name="submit" value="add to cart">
 	                </div>
+                </form>
 				</c:forEach>
                 
             </div>
