@@ -1,6 +1,8 @@
 package com.admin;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,26 @@ public class AddProductsServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String id = request.getParameter("id");
-		String category = request.getParameter("category");
-		String brand = request.getParameter("brand");
-		String price = request.getParameter("price");
-		String description = request.getParameter("description");
+		
+		
+		String Name = request.getParameter("Name");
+		String Category = request.getParameter("Category");
+		String Brand = request.getParameter("Brand");
+		String UnitPrice = request.getParameter("UnitPrice");
+		String Quantity = request.getParameter("Quantity");
+		String Description = request.getParameter("Description");
+		
+		boolean isTrue;
+		
+		isTrue = ProductDBUtil.addproduct(Name,Category,Brand,UnitPrice,Quantity,Description);
+				
+		if(isTrue == true) {
+			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
+			dis.forward(request, response);
+		}else {
+			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
+			dis2.forward(request, response);
+		}
 	}
 
 }

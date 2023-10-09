@@ -1,6 +1,7 @@
 package com.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -21,24 +22,26 @@ public class AdminServlet extends HttpServlet {
 		String username = request.getParameter("uid");
 		String email = request.getParameter("mail");
 		String password = request.getParameter("pass");
+		boolean isSucess = false;
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
 		
 		try {
-		      List<Admin> adminDetails = AdminDBUtil.validate(username, email, password);
-		      request.setAttribute("adminDetails", adminDetails);
+		      isSucess = AdminDBUtil.validate(username, email, password);
+		      if(isSucess) {
+		    	  response.sendRedirect("AdminDashboard.jsp");
+		      } else {
+		    	  out.println("<script type='text/javascript'>");
+		    	  out.println("alert('Your username and password is incorrect');");
+		    	  out.println("location = 'LoginPage.jsp'");
+		    	  out.println("</script>");
+		      }
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		
-		RequestDispatcher dis = request.getRequestDispatcher("AdminDashboard.jsp");
-		dis.forward(request, response);
-		
-		
-		
-		
-		
-		
+				
 	}
 
 }

@@ -12,6 +12,17 @@
                <url-pattern>/log</url-pattern>
                
        </servlet-mapping>
+       
+       
+       <servlet>
+                <servlet-name>AddProductsServlet</servlet-name>
+                <servlet-class>com.admin.AddProductsServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+               <servlet-name>AddProductsServlet</servlet-name>
+               <url-pattern>/insert</url-pattern>
+               
+       </servlet-mapping>
 
 
 </web-app>
