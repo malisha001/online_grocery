@@ -19,43 +19,48 @@ public class CartDB {
 	private static Statement st1 = null;
 	private static ResultSet rs1  = null;
 	
-	public static List<cart> getItems(int itemsId){
+	
+	public static boolean getItems(int itemsId, int quentity, String userID){
 		
-		ArrayList<cart> cartitems = new ArrayList<>();
-		
+		boolean isSucces = false;
+		String ItemName = "";
+		int price = 0;
 		try {
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
-			String sql = "select * from item where itemID = '"+itemsId+"'";
-			rs = st.executeQuery(sql);
+	        // Select the item's details
+	        String sql = "SELECT itemName, price FROM item WHERE itemID = " + itemsId;
+	        rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
-				int cartid = 0;
-				String ItemName = null;
-				int Quentity = 0;
-				int price = 0;
-				
-				cart c = new cart(cartid,ItemName,Quentity,price);
-				cartitems.add(c);
+
+				ItemName = rs.getString("itemName");
+				price = rs.getInt("price");
+					
 			}
+			System.out.println(price);
+			String username = userID;
+			int Quentity = quentity;
+			
+			con1 = DBconnecter.getConnection();
+			st1 = con1.createStatement();
+			String sql1 = "insert into cart values(0,'"+userID+"','"+ItemName+"','"+Quentity+"','"+price+"')";
+			int rs1 = st1.executeUpdate(sql1);
+			
+			if(rs1>0) {
+				isSucces = true;
+				System.out.println(isSucces);
+			}
+			else {
+				isSucces = false;
+			}
+
 		}
 		catch(Exception e) {
 			
 		}
 		
-		return cartitems;
+		return isSucces;
 	}
-	public static void Insertitems(List<cart> itemsList) throws SQLException {
-		con1 = DBconnecter.getConnection();
-		st1 = con1.createStatement();
-		
-		for (cart item : itemsList) {
-	        String ItemName = item.getItemName();
-	        int Quentity = item.getQuentity();
-	        int price = item.getPrice();
 
-	        String sql = "INSERT INTO cart (itemName, quantity, price) VALUES ('" + ItemName + "', '" + Quentity + "', '" + price + "')";
-	        st1.executeUpdate(sql);
-	    }
-	}
 }

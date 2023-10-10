@@ -1,24 +1,19 @@
 package home;
 
 public class cart {
-	int cartid;
+
 	String ItemName;
+	String username;
 	int Quentity;
 	int price;
 	
-	
-	public cart(int cartid, String itemName, int quentity, int price) {
+	public cart( String itemName, String username, int quentity, int price) {
 		super();
-		this.cartid = cartid;
+
 		ItemName = itemName;
+		this.username = username;
 		Quentity = quentity;
 		this.price = price;
-	}
-	public int getCartid() {
-		return cartid;
-	}
-	public void setCartid(int cartid) {
-		this.cartid = cartid;
 	}
 	public String getItemName() {
 		return ItemName;
@@ -38,9 +33,16 @@ public class cart {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	@Override
 	public String toString() {
-		return "cart [cartid=" + cartid + ", ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price
+		return "cart [ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price
 				+ "]";
 	}
 	
