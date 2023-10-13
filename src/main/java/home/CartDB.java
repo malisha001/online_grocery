@@ -19,6 +19,10 @@ public class CartDB {
 	private static Statement st1 = null;
 	private static ResultSet rs1  = null;
 	
+	private static Connection con2 = null;
+	private static Statement st2 = null;
+	private static ResultSet rs2 = null;
+	
 	
 	public static boolean getItems(int itemsId, int quentity, String userID){
 		
@@ -62,5 +66,34 @@ public class CartDB {
 		
 		return isSucces;
 	}
+	public static List<cart> getCartDetails(String username){
+		
+		ArrayList<cart> cartItems = new ArrayList<>();
+		String itemss = "";
+		int quentity = 0;
+		int price = 0;
+		
+		try {
+			con2 = DBconnecter.getConnection();
+			st2 = con2.createStatement();
+			String sql2 = "select * from cart where userId = '"+username+"'";
+			rs2 = st.executeQuery(sql2);
+			
+			while(rs.next()) {
+				itemss = rs.getString(3);
+				quentity = rs.getInt(4);
+				price = rs.getInt(5);
+			}
+			
+			cart ca  = new cart(itemss, quentity,price );
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return null;
+		
+	}
+
 
 }

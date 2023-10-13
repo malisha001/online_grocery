@@ -9,6 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/cart"></jsp:include>
+	<%
+	if(session.getAttribute("username")==null){
+		response.sendRedirect("LoginPage.jsp");
+	}
+
+	%>
 	<div class="section-p1" id="cart">
         <table width="100%">
             <thead>
@@ -22,10 +29,11 @@
                 </tr>
             </thead>
             <tbody>
+            <c:forEach var = "cart" items = "${cartDetails}">
                     <form method="post" action="#">
                     <input type="hidden" name="book_id" value="">
                     <tr>
-                        <td><p>tt</p></td>
+                        <td><p>${cart.ItemName}</p></td>
                         <td><p>tt</p></td>
                             <td class="price"><p>tt</p></td>
                             <td><input type="number" name="quantity" value="1" min="1" class="quantity-input" onchange="calculate(this)"></td>
@@ -38,6 +46,7 @@
                                 
                         </tr>
                     </form>
+             </c:forEach>
             </tbody>
         </table>
     </div>

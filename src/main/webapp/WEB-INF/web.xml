@@ -24,6 +24,14 @@
     <servlet-name>home</servlet-name>
     <url-pattern>/homes</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>cart</servlet-name>
+    <servlet-class>online_grocery.RetriveCartServlet</servlet-class>
+</servlet>
 
+<servlet-mapping>
+    <servlet-name>cart</servlet-name>
+    <url-pattern>/cart</url-pattern>
+</servlet-mapping>
 
 </web-app>

@@ -15,6 +15,12 @@ public class cart {
 		Quentity = quentity;
 		this.price = price;
 	}
+	public cart(String ItemName,int Quentity,int price) {
+		this.ItemName = ItemName;
+		this.Quentity = Quentity;
+		this.price = price;
+		// TODO Auto-generated constructor stub
+	}
 	public String getItemName() {
 		return ItemName;
 	}

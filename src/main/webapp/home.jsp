@@ -51,7 +51,7 @@
             
 
             <div class="icons">
-                <a href="#"><i class="uil uil-shopping-cart-alt"></i></a>
+                <a href="cart.jsp"><i class="uil uil-shopping-cart-alt"></i></a>
                 <a href="#"><i class="uil uil-heart"></i></a>
                 <a href="#" class="user-pic" onclick="toggleMenu()"><i class="uil uil-user-circle"></i></a>
                 <div class="subb-men-wrapp" id="subMenu">
