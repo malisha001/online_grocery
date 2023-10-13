@@ -38,6 +38,7 @@ public class RetriveCartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		
+		
 		try {
 			List<cart>cartDetails = CartDB.getCartDetails(username);
 			request.setAttribute("cartDetails", cartDetails);

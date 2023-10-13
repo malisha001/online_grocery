@@ -1,5 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+	 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
 	<%
 	if(session.getAttribute("username")==null){
 		response.sendRedirect("LoginPage.jsp");
-	}
+	}	
 
 	%>
 	<div class="section-p1" id="cart">
@@ -29,14 +31,14 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach var = "cart" items = "${cartDetails}">
+            <c:forEach var = "cartItems" items = "${cartDetails}">
                     <form method="post" action="#">
                     <input type="hidden" name="book_id" value="">
                     <tr>
-                        <td><p>${cart.ItemName}</p></td>
+                        <td><p>${cartItems.itemName}</p></td>
                         <td><p>tt</p></td>
-                            <td class="price"><p>tt</p></td>
-                            <td><input type="number" name="quantity" value="1" min="1" class="quantity-input" onchange="calculate(this)"></td>
+                            <td class="price"><p>${cartItems.price}</p></td>
+                            <td><input type="number" name="quantity" value="${cartItems.quentity}" min="1" class="quantity-input" onchange="calculate(this)"></td>
 
                             <td class="total">Rs.</td>
                             <input type="hidden" name="total" value="">

@@ -53,7 +53,6 @@ public class CartDB {
 			
 			if(rs1>0) {
 				isSucces = true;
-				System.out.println(isSucces);
 			}
 			else {
 				isSucces = false;
@@ -68,30 +67,41 @@ public class CartDB {
 	}
 	public static List<cart> getCartDetails(String username){
 		
+		
 		ArrayList<cart> cartItems = new ArrayList<>();
-		String itemss = "";
+		System.out.println("cart DB:"+username);
+		
+		String itemss = null;
 		int quentity = 0;
 		int price = 0;
+		
+		
 		
 		try {
 			con2 = DBconnecter.getConnection();
 			st2 = con2.createStatement();
 			String sql2 = "select * from cart where userId = '"+username+"'";
-			rs2 = st.executeQuery(sql2);
 			
-			while(rs.next()) {
-				itemss = rs.getString(3);
-				quentity = rs.getInt(4);
-				price = rs.getInt(5);
+			rs2 = st2.executeQuery(sql2);
+			
+			while(rs2.next()) {
+				itemss = rs2.getString("itemName");
+				quentity = rs2.getInt("quentity");
+				price = rs2.getInt("price");
+				
+				
+				
+				cart ca  = new cart(itemss, quentity,price );
+				cartItems.add(ca);
 			}
 			
-			cart ca  = new cart(itemss, quentity,price );
+			
 		}
 		catch(Exception e) {
 			
 		}
 		
-		return null;
+		return cartItems;
 		
 	}
 

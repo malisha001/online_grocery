@@ -36,7 +36,7 @@ public class HomeServlet extends HttpServlet {
 		try {
 			List<items>itemDetails = homeDB.getItemDetails();
 			request.setAttribute("itemDetails", itemDetails);
-			System.out.println(itemDetails);
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();

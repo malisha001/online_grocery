@@ -15,7 +15,6 @@ public class homeDB {
 	
 	public static List<items> getItemDetails(){
 		
-		
 		ArrayList<items> item = new ArrayList<>();
 		
 		try {
@@ -32,6 +31,7 @@ public class homeDB {
 				
 				items it = new items(id,itemImg,itemName,price);
 				item.add(it);
+				
 			}
 
 		}
