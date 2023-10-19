@@ -23,11 +23,19 @@ public class CartDB {
 	private static Statement st2 = null;
 	private static ResultSet rs2 = null;
 	
+	private static Connection con3 = null;
+	private static Statement st3 = null;
+	private static ResultSet rs3 = null;
+	
+	private static Connection con4 = null;
+	private static Statement st4 = null;
+	private static ResultSet rs4 = null;
 	
 	public static boolean getItems(int itemsId, int quentity, String userID){
 		
 		boolean isSucces = false;
 		String ItemName = "";
+		int Tprice = 0;
 		int price = 0;
 		try {
 			con = DBconnecter.getConnection();
@@ -42,13 +50,14 @@ public class CartDB {
 				price = rs.getInt("price");
 					
 			}
-			System.out.println(price);
+			System.out.println(Tprice);
+			Tprice = price*quentity;
 			String username = userID;
 			int Quentity = quentity;
 			
 			con1 = DBconnecter.getConnection();
 			st1 = con1.createStatement();
-			String sql1 = "insert into cart values(0,'"+userID+"','"+ItemName+"','"+Quentity+"','"+price+"')";
+			String sql1 = "insert into cart values(0,'"+userID+"','"+ItemName+"','"+Quentity+"','"+Tprice+"')";
 			int rs1 = st1.executeUpdate(sql1);
 			
 			if(rs1>0) {
@@ -67,13 +76,13 @@ public class CartDB {
 	}
 	public static List<cart> getCartDetails(String username){
 		
-		
 		ArrayList<cart> cartItems = new ArrayList<>();
 		System.out.println("cart DB:"+username);
 		
 		String itemss = null;
 		int quentity = 0;
 		int price = 0;
+		int ID = 0;
 		
 		
 		
@@ -85,24 +94,45 @@ public class CartDB {
 			rs2 = st2.executeQuery(sql2);
 			
 			while(rs2.next()) {
+				
 				itemss = rs2.getString("itemName");
 				quentity = rs2.getInt("quentity");
 				price = rs2.getInt("price");
+				ID  = rs2.getInt("id");
 				
-				
-				
-				cart ca  = new cart(itemss, quentity,price );
+				cart ca  = new cart(itemss, quentity,price,ID);
 				cartItems.add(ca);
-			}
+			}	
+		}
+		catch(Exception e) {
 			
+		}
+		return cartItems;
+		
+	}
+	public static void deleteItems(int id) {
+		
+		try {
+			con3 = DBconnecter.getConnection();
+			st3 = con3.createStatement();
+			String sql3 = "DELETE FROM cart WHERE id = '"+id+"'";
+			int rs3 = st3.executeUpdate(sql3);
 			
 		}
 		catch(Exception e) {
 			
 		}
-		
-		return cartItems;
-		
+	}
+	public static void updateItems(int id,int qnt) {
+		try {
+			con4 = DBconnecter.getConnection();
+			st4 = con4.createStatement();
+			String sql4 = "UPDATE cart SET quentity = '"+qnt+"' where id= '"+id+"'";
+			int rs4 = st4.executeUpdate(sql4);
+		}
+		catch(Exception e) {
+			
+		}
 	}
 
 

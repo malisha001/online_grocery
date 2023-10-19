@@ -33,5 +33,14 @@
     <servlet-name>cart</servlet-name>
     <url-pattern>/cart</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>delete</servlet-name>
+    <servlet-class>online_grocery.DeleteServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>delete</servlet-name>
+    <url-pattern>/deleteItems</url-pattern>
+</servlet-mapping>
 
 </web-app>

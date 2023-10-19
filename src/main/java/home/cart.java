@@ -3,22 +3,15 @@ package home;
 public class cart {
 
 	String ItemName;
-	String username;
 	int Quentity;
 	int price;
+	int id;
 	
-	public cart( String itemName, String username, int quentity, int price) {
-		super();
-
-		ItemName = itemName;
-		this.username = username;
-		Quentity = quentity;
-		this.price = price;
-	}
-	public cart(String ItemName,int Quentity,int price) {
+	public cart(String ItemName,int Quentity,int price,int Id) {
 		this.ItemName = ItemName;
 		this.Quentity = Quentity;
 		this.price = price;
+		this.id = Id;
 		// TODO Auto-generated constructor stub
 	}
 	public String getItemName() {
@@ -40,17 +33,19 @@ public class cart {
 		this.price = price;
 	}
 	
-	public String getUsername() {
-		return username;
+	public int getId() {
+		return id;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setId(int id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {
-		return "cart [ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price
-				+ "]";
+		return "cart [ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price + ", id=" + id + "]";
 	}
+	
+
+
 	
 	
 }

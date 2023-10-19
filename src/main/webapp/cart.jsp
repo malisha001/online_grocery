@@ -1,4 +1,5 @@
-
+<%@page import="home.cart"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 	 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,7 +17,8 @@
 	if(session.getAttribute("username")==null){
 		response.sendRedirect("LoginPage.jsp");
 	}	
-
+	List<cart>cartDetails = (List<cart>)request.getAttribute("cartDetails");
+	System.out.println(cartDetails);
 	%>
 	<div class="section-p1" id="cart">
         <table width="100%">
@@ -31,23 +33,30 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach var = "cartItems" items = "${cartDetails}">
-                    <form method="post" action="#">
+            <c:forEach var = "cart" items = "${cartDetails}">
+                   
                     <input type="hidden" name="book_id" value="">
                     <tr>
-                        <td><p>${cartItems.itemName}</p></td>
+                        <td><p>${cart.itemName}</p></td>
                         <td><p>tt</p></td>
-                            <td class="price"><p>${cartItems.price}</p></td>
-                            <td><input type="number" name="quantity" value="${cartItems.quentity}" min="1" class="quantity-input" onchange="calculate(this)"></td>
+                           	<td class="price"><p>${cart.price}</p></td>
+                           	 <form action="UpdateServlet" method="post">
+                            <td><input type="number" name="quantity" value="${cart.quentity}" min="1" class="quantity-input" onchange="calculate(this)"></td>
 
                             <td class="total">Rs.</td>
                             <input type="hidden" name="total" value="">
-
-                            <td><input type="submit" value="update" ><td>
-                            <td><a href="#">tt</i></a></td>
+                           
+                                <td><input type="submit" value="update" ><td>
+                               	<input type="hidden" name="uitemId" value="${cart.id}">
+          
+                            </form>
+                            <form action="DeleteServlet" method="post">
+                                <td><input type=submit value="delete"><td>
+                                <input type="hidden" name="itemId" value="${cart.id}">
+                            </form>
                                 
                         </tr>
-                    </form>
+               
              </c:forEach>
             </tbody>
         </table>

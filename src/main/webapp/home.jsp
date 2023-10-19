@@ -205,9 +205,9 @@
                     <a href="#" class="buttn">add to cart</a>
                 </div>
 
-				<c:forEach var = "item" items = "${itemDetails}">
+				<c:forEach var = "itemmm" items = "${itemDetails}">
                     <form action="AddCartServlet" method="post">
-                        <input type="hidden" name="itemid" value="${item.id}">
+                        <input type="hidden" name="itemid" value="${itemmm.id}">
                         
 	                <div class="boxx">
 	                    <span class="discount">-33%</span>
@@ -216,7 +216,7 @@
 	                        <a href="#"><i class="uil uil-eye"></i></a>
 	                    </div>
 	                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-	                    <h3>${item.name}</h3>
+	                    <h3>${itemmm.name}</h3>
 	                    <div class="price">$10.0 <span>$13.20</span></div>
 	                    <div class="quentity">
 	                        <span>quentity:</span>
