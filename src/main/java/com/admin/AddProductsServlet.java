@@ -25,9 +25,14 @@ public class AddProductsServlet extends HttpServlet {
 		String Quantity = request.getParameter("Quantity");
 		String Description = request.getParameter("Description");
 		
+		double cUnitPrice = Double.parseDouble(UnitPrice);
+		int cQuantity = Integer.parseInt(Quantity);
+		
+		
 		boolean isTrue;
 		
-		isTrue = ProductDBUtil.addproduct(Name,Category,Brand,UnitPrice,Quantity,Description);
+		isTrue = ProductDBUtil.addproduct(Name,Category,Brand, cUnitPrice,cQuantity,Description);
+
 				
 		if(isTrue == true) {
 			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
