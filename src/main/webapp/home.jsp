@@ -15,11 +15,13 @@
 <body>
 	<jsp:include page="/homes"></jsp:include>
 	<%
+	
 	if(session.getAttribute("username")==null){
 		response.sendRedirect("LoginPage.jsp");
 	}
 		List<items>itemDetails = (List<items>)request.getAttribute("itemDetails");
 		System.out.println(itemDetails);
+
 	%>
     <!-- header section -->
     <header>
@@ -105,37 +107,21 @@
         </div>
     </section>
     <div class="grid-container">
-        <div><a href="#"><img src="image/BEVERAGES-1-removebg-preview.png" alt="" width="150px"><p>beverage</p></a></div>
-        <div><a href="#"><img src="image/BREAKFAST-BAKERY-removebg-preview.png" alt="" width="150px"><p>bakery items</p></a></div>
-        <div><a href="#"><img src="image/DAIRY-PRODUCTS-removebg-preview.png" alt="" width="150px"><p>diary product</p></a></div>  
-        <div><a href="#"><img src="image/Untitled-design-22.png" alt="" width="150px"><p>coffee,tea and molts</p></a></div>
-        <div><a href="#"><img src="image/GROCERY-STAPLES-removebg-preview.png" alt="" width="150px"><p>grocery & staples</p></a></div>
-        <div><a href="#"><img src="image/HOUSEHOLD-removebg-preview.png" alt="" width="150px"><p>houose hold</p></a></div>
-        <div><a href="#"><img src="image/iconss-14-removebg-preview.png" alt="" width="150px"><p>snack and confectionary</p></a></div>
-        <div><a href="#"><img src="image/Untitled-design-20.png" alt="" width="150px"><p>frozen</p></a></div>
+    	<div><a href="${pageContext.request.contextPath}/CatergaryServlet?id=1"><img src="image/BEVERAGES-1-removebg-preview.png" alt="" width="150px"><p>beverage</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/CatergaryServlet?id=2"><img src="image/BREAKFAST-BAKERY-removebg-preview.png" alt="" width="150px"><p>bakery items</p></a></div>
+        <div><a href="/categories?id=3"><img src="image/DAIRY-PRODUCTS-removebg-preview.png" alt="" width="150px"><p>diary product</p></a></div>  
+        <div><a href="/categories?id=4"><img src="image/Untitled-design-22.png" alt="" width="150px"><p>coffee,tea and molts</p></a></div>
+        <div><a href="/categories?id=5"><img src="image/GROCERY-STAPLES-removebg-preview.png" alt="" width="150px"><p>grocery & staples</p></a></div>
+        <div><a href="/categories?id=6"><img src="image/HOUSEHOLD-removebg-preview.png" alt="" width="150px"><p>houose hold</p></a></div>
+        <div><a href="/categories?id=7"><img src="image/iconss-14-removebg-preview.png" alt="" width="150px"><p>snack and confectionary</p></a></div>
+        <div><a href="/categories?id=8"><img src="image/Untitled-design-20.png" alt="" width="150px"><p>frozen</p></a></div>
     </div>
     <!-- catergary end -->
-    <!-- product start -->
+    <!-- feature product start -->
     <section class="product" id="product">
         <h1 class="heading">latest <span>product</span></h1>
         <div>
             <div class="boxx-cont">
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
 
                 <div class="boxx">
                     <span class="discount">-33%</span>
@@ -145,23 +131,6 @@
                     </div>
                     <img src="image/Banana-Single.jpg" alt="" height="100px">
                     <h3>organic tomato</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
                     <div class="price">$10.0 <span>$13.20</span></div>
                     <div class="quentity">
                         <span>quentity:</span>
@@ -230,6 +199,13 @@
                 
             </div>
         </div>
+    </section>
+    <!-- feature product end -->
+    <!-- product start -->
+    <section>
+        <h1 class="heading">backery items</h1>
+
+
     </section>
     <!-- product end -->
     <!-- footer start -->

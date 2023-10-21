@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/homes"></jsp:include>
-
+<!-- <jsp:include page="/homes"></jsp:include> -->
+    <form action="" method="post">
+        <input type="text" name="id">
+        <input type="submit" value="submit">
+    </form>
 	hh
 	<c:forEach var="cus" items="${cusDetails}">
     ${cus.email}

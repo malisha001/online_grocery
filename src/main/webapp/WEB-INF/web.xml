@@ -26,7 +26,7 @@
 </servlet-mapping>
 <servlet>
     <servlet-name>cart</servlet-name>
-    <servlet-class>online_grocery.RetriveCartServlet</servlet-class>
+    <servlet-class>servlet.RetrieveCartServlet</servlet-class>
 </servlet>
 
 <servlet-mapping>
@@ -41,6 +41,14 @@
 <servlet-mapping>
     <servlet-name>delete</servlet-name>
     <url-pattern>/deleteItems</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>category</servlet-name>
+    <servlet-class>online_grocery.CatergaryServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>category</servlet-name>
+    <url-pattern>/categories</url-pattern>
 </servlet-mapping>
 
 </web-app>
