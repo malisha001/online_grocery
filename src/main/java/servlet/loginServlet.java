@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import online_grocery.login;
+import service.*;
+import model.*;
 
 /**
  * Servlet implementation class loginServlet
@@ -22,9 +24,9 @@ public class loginServlet extends HttpServlet {
 		String username = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		
-		
+		iCustomerService CustomerService = new CustomerServiceImpl();
 		try {
-			boolean l = login.validate(username, pwd);
+			boolean l = CustomerService.validate(username, pwd);
 			if(l){
 				HttpSession session = request.getSession();
 				session.setAttribute("username",username);

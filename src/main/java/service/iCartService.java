@@ -7,6 +7,7 @@ import model.Cart;
 
 public interface iCartService {
 	
+	
 //	add items from home to cart their own cart(insert)
 	public boolean getItems(int itemId,int quentity,String userID);
 	
@@ -19,5 +20,5 @@ public interface iCartService {
 //update quantity of items in cart
 	public void updateItems(int id,int qnt);
 	
-//
+
 }

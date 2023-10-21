@@ -17,7 +17,7 @@
 	<%
 	
 	if(session.getAttribute("username")==null){
-		response.sendRedirect("LoginPage.jsp");
+		response.sendRedirect("loginNew.jsp");
 	}
 		List<items>itemDetails = (List<items>)request.getAttribute("itemDetails");
 		System.out.println(itemDetails);
@@ -73,9 +73,9 @@
                             <p>log out</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="${pageContext.request.contextPath}/CustomerRetriveServlet" class="subb-men-linkk">
                             <img src="image/help.png" alt="">
-                            <p>edite profile</p>
+                            <p>view profile</p>
                             <span>></span>
                         </a>
                     </div>

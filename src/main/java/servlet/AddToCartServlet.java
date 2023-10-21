@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import service.*;
+import home.CartDB;
 
 /**
  * Servlet implementation class AddToCartServlet
@@ -27,7 +31,6 @@ public class AddToCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -35,7 +38,30 @@ public class AddToCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		int itemID = Integer.parseInt(request.getParameter("itemid"));
+		int quentity = Integer.parseInt(request.getParameter("quentity"));
+		
+		HttpSession session = request.getSession();
+		String userID = (String) session.getAttribute("username");
+				
+		System.out.println("userID:"+userID);
+		System.out.println(quentity);
+		// Create an instance of the CartServiceImpl
+		iCartService cartService = new CartServiceImpl();
+		
+		boolean istrue;
+		
+		try {
+			istrue = cartService.getItems(itemID, quentity, userID);
+			if(istrue == true) {
+				response.sendRedirect("home.jsp");
+			}
+			
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 
 }

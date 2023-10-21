@@ -17,7 +17,7 @@
 
 <servlet>
     <servlet-name>home</servlet-name>
-    <servlet-class>online_grocery.HomeServlet</servlet-class>
+    <servlet-class>servlet.HomePageServlet</servlet-class>
 </servlet>
 
 <servlet-mapping>

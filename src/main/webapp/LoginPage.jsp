@@ -18,7 +18,7 @@
 			<img class="img-thumbnail" src="image/login@4x.png">
 	    </div>
 	    <div class="col-4">
-	    <form action="LoginS" method = "post">
+	    <form action="#" method = "post">
 			  
 			    <label class="form-label">Email address</label>
 			    <input type="text" class="form-control" name = "email">
