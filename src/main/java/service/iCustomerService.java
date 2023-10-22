@@ -6,7 +6,8 @@ import model.Customer;
 
 public interface iCustomerService {
 	//create account
-	public boolean insertaccount(String fname, String lname,String email, String phone, String password,String username);
+	public boolean insertaccount(String fname, String lname,String email, String phone, String password);
+	
 	//validate customer
 	public boolean validate(String userN,String passw);
 	

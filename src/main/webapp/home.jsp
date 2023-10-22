@@ -63,7 +63,7 @@
                             <h2>${username}</h2>
                         </div>
                         <hr>
-                        <a href="LoginPage.jsp" class="subb-men-linkk">
+                        <a href="loginNew.jsp" class="subb-men-linkk">
                             <img src="image/setting.png" alt="">
                             <p>login</p>
                             <span>></span>

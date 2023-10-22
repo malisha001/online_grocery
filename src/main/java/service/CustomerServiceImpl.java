@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements iCustomerService{
 			
 			System.out.println(userN);
 			
-			String sql = "SELECT * FROM custommers WHERE email = '" + userN + "' AND password = '" + passw + "'";
+			String sql = "SELECT * FROM customerprofile WHERE email = '" + userN + "' AND password = '" + passw + "'";
 			
 			rs = st.executeQuery(sql);
 			result  = rs.next();
@@ -131,12 +131,28 @@ boolean isCorrect = false;
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	//create account
 	@Override
-	public boolean insertaccount(String fname, String lname, String email, String phone, String password,
-			String username) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertaccount(String fname, String lname, String email, String phone, String password) {
+		boolean isCorrect = false;
+   	 
+   	 try {
+	   		con = DBconnecter.getConnection();
+			st = con.createStatement();
+            String sql = "insert into customerprofile(FirstName, LastName, Email, PhoneNumber, PassWord) values ('"+fname+"', '"+lname+"', '"+email+"', '"+phone+"', '"+password+"')";
+   		 int rs = st.executeUpdate(sql);
+   		 
+   		 if(rs > 0) {
+   			 isCorrect =true;
+   		 }
+   		 else {
+   			 isCorrect = false;
+   		 }
+   	 }
+   	 catch (Exception e) {
+   		 e.printStackTrace();
+   	 }
+   	 return isCorrect;
 	}
 
 }

@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Customer;
 import service.CustomerServiceImpl;
 import service.iCustomerService;
 
 /**
- * Servlet implementation class CustomerDeleteServlet
+ * Servlet implementation class CreateAccountServlet
  */
-@WebServlet("/CustomerDeleteServlet")
-public class CustomerDeleteServlet extends HttpServlet {
+@WebServlet("/CreateAccountServlet")
+public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerDeleteServlet() {
+    public CreateAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,25 +39,24 @@ public class CustomerDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String fname = request.getParameter("first_name");
+		String lname = request.getParameter("last_name");
 		String email = request.getParameter("email");
-		System.out.println("email is on "+ email);
+		String phone = request.getParameter("phone_number");
+		String password = request.getParameter("password");
 		
 		iCustomerService CustomerService = new CustomerServiceImpl();
-		boolean isTrue;
 		
-		isTrue = CustomerService.deleteCustomer(email);
+		boolean IsTrue;
+		IsTrue = CustomerService.insertaccount(fname, lname, email, phone, password);
 		
-		if(isTrue == true) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("loginNew.jsp");
-			dispatcher.forward(request, response);
+		if(IsTrue == true) {
+			RequestDispatcher dis = request.getRequestDispatcher("loginNew.jsp");
+			dis.forward(request, response);
 		}
 		else {
-			List<Customer> cusDetails = CustomerService.getcustomerprofile(email);
-			request.setAttribute("cusDetails", cusDetails);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("unsuccess.jsp");
-			dispatcher.forward(request, response);
+			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
+			dis2.forward(request, response);
 		}
 	}
 

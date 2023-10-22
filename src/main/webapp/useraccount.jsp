@@ -86,7 +86,7 @@
            <!-- ... Your existing code ... -->
 
              <div class="delete-account section" id="delete-account">
-                 <form action="deletecustomer.jsp" method="post">
+                 <form action="CustomerDeleteServlet" method="post">
                     <label for="first_name">Account Delete!!:</label>
                         <h4>Dear Sir/ Madam You are going to delete your Online Grocery ?
                             If your going to Delete your account press Delete button.</h4>
