@@ -30,7 +30,7 @@
          %>
 
         <div class="form-card section" id="form-card">
-            <form action="update" method="post">
+            <form action="CustomerUpdateServlet" method="post">
             
                 <input type="hidden" name="cusid" value="<%= id%>">
                 

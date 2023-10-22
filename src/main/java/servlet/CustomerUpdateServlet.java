@@ -52,7 +52,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		isTrue = CustomerService.Updatecustomer(id, fname, lname, email, phone, password);
 		
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("LoginNew.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("loginNew.jsp");
 			dis.forward(request, response);
 		}
 		else {
