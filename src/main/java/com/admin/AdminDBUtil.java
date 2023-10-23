@@ -1,6 +1,7 @@
 package com.admin;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,10 +14,10 @@ public class AdminDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
-	public static List<Admin> validate(String name, String Email, String password ){
-		
-		ArrayList<Admin> admin = new ArrayList<>();
-		
+	private static boolean isSucess = false;
+	
+	public static boolean validate(String name, String Email, String password ){
+			
 		//validate
 		
 		try {
@@ -28,22 +29,17 @@ public class AdminDBUtil {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
-				int id = rs.getInt(1);
-				String nameA = rs.getString(2);
-				String email = rs.getString(3);
-				String passwordA = rs.getString(4);
-				
-				Admin a = new Admin(id,nameA,email,passwordA);
-				admin.add(a);
-				
-				
+				isSucess = true;				
+			}
+			else {
+				isSucess = false;
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
 			
 		}
-		return admin;
+		return isSucess;
 	}
 
 }

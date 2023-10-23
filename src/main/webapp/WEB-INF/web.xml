@@ -12,6 +12,47 @@
                <url-pattern>/log</url-pattern>
                
        </servlet-mapping>
+       
+       
+       <servlet>
+                <servlet-name>AddProductsServlet</servlet-name>
+                <servlet-class>com.admin.AddProductsServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+               <servlet-name>AddProductsServlet</servlet-name>
+               <url-pattern>/insert</url-pattern>
+               
+       </servlet-mapping>
+       
+        <servlet>
+                <servlet-name>ItemList</servlet-name>
+                <servlet-class>com.admin.ItemsServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+               <servlet-name>ItemList</servlet-name>
+               <url-pattern>/item</url-pattern>
+       </servlet-mapping>
+       
+       <servlet>
+                <servlet-name>UpdateItem</servlet-name>
+                <servlet-class>com.admin.UpdateItemServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+               <servlet-name>UpdateItem</servlet-name>
+               <url-pattern>/update</url-pattern>
+               
+       </servlet-mapping>
+       
+       
+       <servlet>
+                <servlet-name>DeleteItem</servlet-name>
+                <servlet-class>com.admin.DeleteItemServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+               <servlet-name>DeleteItem</servlet-name>
+               <url-pattern>/delete</url-pattern>
+               
+       </servlet-mapping>
 
 
 </web-app>
