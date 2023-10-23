@@ -17,7 +17,6 @@ public class AddProductsServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		String Name = request.getParameter("Name");
 		String Category = request.getParameter("Category");
 		String Brand = request.getParameter("Brand");
@@ -27,7 +26,6 @@ public class AddProductsServlet extends HttpServlet {
 		
 		double cUnitPrice = Double.parseDouble(UnitPrice);
 		int cQuantity = Integer.parseInt(Quantity);
-		
 		
 		boolean isTrue;
 		

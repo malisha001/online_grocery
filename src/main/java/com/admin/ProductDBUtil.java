@@ -12,73 +12,33 @@ public class ProductDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet resultSet = null;
 	
-	private static Connection con1 = null;
-	private static Statement stmt1 = null;
-	private static ResultSet resultSet1 = null;
 	
-	public static boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String Description ) {
-		boolean isSuccess = false;
-
-		
+	
+	
+	     
+public static boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String Description ) {		
+	boolean isSuccess = false;
 		try {
-		    con1 = DBConnect.getConnection();
-		    stmt1 = con1.createStatement();            
-		    String sql1 = "INSERT INTO items (Name) VALUES ('" + Name + "')";
-		    System.out.println(Name);
-		    System.out.println(Category);
-		    System.out.println(Brand);
-		    System.out.println(UnitPrice);
-		    System.out.println(Quantity);
-		    System.out.println(Description);
-   
-		    int resultSet1 = stmt1.executeUpdate(sql1);
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "insert into items(ID,Name,Category,Brand,UnitPrice,Quantity,Description) VALUES (','"+Name+"','"+Category+"','"+Brand+"','"+UnitPrice+"','"+Quantity+"','"+Description+"')";
+			int rs = stmt.executeUpdate(sql);
 			
-			
-			System.out.println("yy " + resultSet1);
-			if(resultSet1>0) {
+			if(rs > 0) {
 				isSuccess = true;
-			}
-			else {
+			} else {
 				isSuccess = false;
 			}
-
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		return isSuccess;
+		
+	return isSuccess;
 		
 	}
-	
-	 
-	    public static boolean deleteProducts(int ID) {
-	    	boolean isSuccess = false;
-	    	
-	    	try {
-	    		con = DBConnect.getConnection();
-	            stmt = con.createStatement();
-	            String Sql = "SELECT * FROM items WHERE ID ='"+ID+"' ";
-	            int resultSet = stmt.executeUpdate(Sql);
-	             
-	            if(resultSet>0) {
-	            	isSuccess =true;
-	            }
-	            else {
-	            	isSuccess = false;
-	            }
-	    		
-	    	}
-	    	catch(Exception e) {
-	    		 e.printStackTrace();
-		         throw new RuntimeException("Failed to delete items from the database.");
-	    	}
-	    
-	    	return isSuccess;
-	    }
-	    
-	    
-	    
-	    
+
 	    public static boolean updateProducts(String id,String name, String cat, String brand, String price, String qty, String dis ) {
 	    	boolean isSuccess = false;
 	    	

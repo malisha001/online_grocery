@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Dashboard</title>
-<link rel="stylesheet" href="adminDashboard.css">
+<link rel="stylesheet" href="AdminDashboard.css">
 <link rel="stylesheet" href="home.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
@@ -44,14 +44,14 @@
             <nav class="navbar">
                 <a href="#">home</a>
                 <div class="dropdown">
-                    <a href="#">catergary</a>
+                    <a href="#">category</a>
                     <div class="dropdown-content">
                         <a href="#">beverage</a>
                         <a href="#">backery items</a>
-                        <a href="#">diary broduct</a>
-                        <a href="#">cofee & tea</a>
-                        <a href="#">drocery &stap</a>
-                        <a href="#">houce hold</a>
+                        <a href="#">diary product</a>
+                        <a href="#">coffee & tea</a>
+                        <a href="#">grocery &stap</a>
+                        <a href="#">house hold</a>
                     </div>
                 </div>
                 <a href="#">product</a>
@@ -140,7 +140,7 @@
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#people-circle"></use>
                         </svg>
-                        Customers
+                        Policies
                     </a>
                 </li>
                 <div class="sidebar-footer">
