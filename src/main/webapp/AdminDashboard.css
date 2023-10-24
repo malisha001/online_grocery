@@ -1,0 +1,107 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap');
+
+:root{
+    --green:#27ae60;
+    --black:#2c2c54;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+*::selection{
+    background:var(--green);
+    color: #fff;
+}
+html{
+    font-size: 70.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6.5rem;
+    scroll-behavior: smooth;
+}
+
+
+.sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.profile-pic {
+    text-align: center;
+}
+
+.profile-pic img {
+    max-width: 190px;
+    border: 3px solid #27ae60;
+    border-radius: 50%;
+}
+
+.search-boxx-cont{
+    display: flex;
+    height: 5rem;
+}
+.search-boxx-cont #search-boxx{
+    height: 100%;
+    width: 21rem;
+    padding: 1rem;
+    font-size: 1.44rem;
+    color: #333;
+    border: 0rem solid rgba(0, 0, 0,.3);
+    /*text-align: none;*/
+}
+.search-boxx-cont label{
+    height: 100%;
+    width: 100%;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    color: #fff;
+    background: #27ae60;
+    text-align: center;
+    cursor: pointer;
+}
+.search-boxx-cont label:hover{
+    background: var(--black);
+}
+
+.sidebar-footer {
+    pointer-events: none;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 230px;
+    justify-content: center;
+}
+
+.sidebar-footer > a {
+    text-decoration: none;
+    color: #27ae60;
+}
+
+.card-background{
+    background: hsla(33, 100%, 56%, 1);
+
+    background: linear-gradient(225deg, hsla(33, 100%, 56%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+
+    background: -moz-linear-gradient(225deg, hsla(33, 100%, 56%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+
+    background: -webkit-linear-gradient(225deg, hsla(33, 100%, 56%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+}
+
+
+/* Style the footer */
+/*footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}*/
