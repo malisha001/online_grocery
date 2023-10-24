@@ -1,5 +1,8 @@
+<%@page import="model.Items"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +13,20 @@
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 <body>
+	<jsp:include page="/homes"></jsp:include>
+	<%
+	
+	if(session.getAttribute("username")==null){
+		response.sendRedirect("loginNew.jsp");
+	}
+		List<Items>itemDetails = (List<Items>)request.getAttribute("itemDetails");
+		System.out.println(itemDetails);
+
+	%>
     <!-- header section -->
     <header>
         <div class="header-1">
-            <a href="#" class="logo"><i class="uil uil-shopping-cart-alt"></i>grocery</a>
+            <a href="${pageContext.request.contextPath}RetrieveCartServlet" class="logo"><i class="uil uil-shopping-cart-alt"></i>grocery</a>
             <form action="" class="search-boxx-cont">
                 <input type="search" id="search-boxx" placeholder="search hear...">
                 <label for="search-boxx"><i class="uil uil-search"></i></label>
@@ -40,29 +53,29 @@
             
 
             <div class="icons">
-                <a href="#"><i class="uil uil-shopping-cart-alt"></i></a>
+                <a href="cart.jsp"><i class="uil uil-shopping-cart-alt"></i></a>
                 <a href="#"><i class="uil uil-heart"></i></a>
                 <a href="#" class="user-pic" onclick="toggleMenu()"><i class="uil uil-user-circle"></i></a>
                 <div class="subb-men-wrapp" id="subMenu">
                     <div class="subb-men">
                         <div class="user-info">
                             <img src="image/user.png" alt="">
-                            <h2>malisha</h2>
+                            <h2>${username}</h2>
                         </div>
                         <hr>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="loginNew.jsp" class="subb-men-linkk">
                             <img src="image/setting.png" alt="">
-                            <p>setting</p>
+                            <p>login</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="${pageContext.request.contextPath}/LogoutServlet" class="subb-men-linkk">
                             <img src="image/logout.png" alt="">
                             <p>log out</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="${pageContext.request.contextPath}/CustomerRetriveServlet" class="subb-men-linkk">
                             <img src="image/help.png" alt="">
-                            <p>edite profile</p>
+                            <p>view profile</p>
                             <span>></span>
                         </a>
                     </div>
@@ -94,126 +107,80 @@
         </div>
     </section>
     <div class="grid-container">
-        <div><a href="#"><img src="image/BEVERAGES-1-removebg-preview.png" alt="" width="150px"><p>beverage</p></a></div>
-        <div><a href="#"><img src="image/BREAKFAST-BAKERY-removebg-preview.png" alt="" width="150px"><p>bakery items</p></a></div>
-        <div><a href="#"><img src="image/DAIRY-PRODUCTS-removebg-preview.png" alt="" width="150px"><p>diary product</p></a></div>  
-        <div><a href="#"><img src="image/Untitled-design-22.png" alt="" width="150px"><p>coffee,tea and molts</p></a></div>
-        <div><a href="#"><img src="image/GROCERY-STAPLES-removebg-preview.png" alt="" width="150px"><p>grocery & staples</p></a></div>
-        <div><a href="#"><img src="image/HOUSEHOLD-removebg-preview.png" alt="" width="150px"><p>houose hold</p></a></div>
-        <div><a href="#"><img src="image/iconss-14-removebg-preview.png" alt="" width="150px"><p>snack and confectionary</p></a></div>
-        <div><a href="#"><img src="image/Untitled-design-20.png" alt="" width="150px"><p>frozen</p></a></div>
+    	<div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Beverages"><img src="image/BEVERAGES-1-removebg-preview.png" alt="" width="150px"><p>beverage</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Bakery"><img src="image/BREAKFAST-BAKERY-removebg-preview.png" alt="" width="150px"><p>bakery items</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Diary"><img src="image/DAIRY-PRODUCTS-removebg-preview.png" alt="" width="150px"><p>diary product</p></a></div>  
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Tea"><img src="image/Untitled-design-22.png" alt="" width="150px"><p>coffee,tea and molts</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Grocery"><img src="image/GROCERY-STAPLES-removebg-preview.png" alt="" width="150px"><p>grocery & staples</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=House"><img src="image/HOUSEHOLD-removebg-preview.png" alt="" width="150px"><p>houose hold</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Snack"><img src="image/iconss-14-removebg-preview.png" alt="" width="150px"><p>snack and confectionary</p></a></div>
+        <div><a href="${pageContext.request.contextPath}/ShowCatergaryServlet?id=Frozen"><img src="image/Untitled-design-20.png" alt="" width="150px"><p>frozen</p></a></div>
     </div>
     <!-- catergary end -->
-    <!-- product start -->
+    <!-- feature product start -->
     <section class="product" id="product">
         <h1 class="heading">latest <span>product</span></h1>
         <div>
             <div class="boxx-cont">
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
 
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic tomato</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
-                <div class="boxx">
-                    <span class="discount">-33%</span>
-                    <div class="icons">
-                        <a href="#"><i class="uil uil-heart-sign"></i></a>
-                        <a href="#"><i class="uil uil-eye"></i></a>
-                    </div>
-                    <img src="image/Banana-Single.jpg" alt="" height="100px">
-                    <h3>organic banana</h3>
-                    <div class="price">$10.0 <span>$13.20</span></div>
-                    <div class="quentity">
-                        <span>quentity:</span>
-                        <input type="number" min="1" max="100" value="1">
-                        <span>/kg</span>
-                    </div>
-                    <a href="#" class="buttn">add to cart</a>
-                </div>
-
+				<c:forEach var = "itemmm" items = "${itemDetails}">
+                    <form action="AddToCartServlet" method="post">
+                        <input type="hidden" name="itemid" value="${itemmm.id}">
+                        
+	                <div class="boxx">
+	                    <span class="discount">-33%</span>
+	                    <div class="icons">
+	                        <a href="#"><i class="uil uil-heart-sign"></i></a>
+	                        <a href="#"><i class="uil uil-eye"></i></a>
+	                    </div>
+	                    <img src="image/Banana-Single.jpg" alt="" height="100px">
+	                    <h3>${itemmm.name}</h3>
+	                    <div class="price">$10.0 <span>$13.20</span></div>
+	                    <div class="quentity">
+	                        <span>quentity:</span>
+	                        <input type="number" min="1" max="100" value="1" name="quentity">
+	                        <span>/kg</span>
+	                    </div>
+                        <input type="submit" class="buttn" name="submit" value="add to cart">
+	                </div>
+                </form>
+				</c:forEach>
                 
             </div>
         </div>
+    </section>
+    <!-- feature product end -->
+    <!-- product start -->
+   
+    <%
+    	String cat = request.getParameter("id");
+    %>
+    <section class="product" id="product">
+        <h1 class="heading"><%= cat %></h1>
+            <div class="boxx-cont">
+                <c:forEach var = "itemm" items = "${catergory}">
+                        <form action="AddCartServlet" method="post">
+                            <input type="hidden" name="itemid" value="${itemm.id}">
+                            
+                        <div class="boxx">
+                            <span class="discount">-33%</span>
+                            <div class="icons">
+                                <a href="#"><i class="uil uil-heart-sign"></i></a>
+                                <a href="#"><i class="uil uil-eye"></i></a>
+                            </div>
+                            <img src="image/Banana-Single.jpg" alt="" height="100px">
+                            <h3>${itemm.name}</h3>
+                            <div class="price">$10.0 <span>$13.20</span></div>
+                            <div class="quentity">
+                                <span>quentity:</span>
+                                <input type="number" min="1" max="100" value="1" name="quentity">
+                                <span>/kg</span>
+                            </div>
+                            <input type="submit" class="buttn" name="submit" value="add to cart">
+                        </div>
+                    </form>
+                    </c:forEach>
+            </div>
     </section>
     <!-- product end -->
     <!-- footer start -->
