@@ -104,98 +104,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <%--<tr>
-                            <td>1</td>
-                            <td>Product 1</td>
-                            <td>Category A</td>
-                            <td>Brand X</td>
-                            <td>10.00</td>
-                            <td>100</td>
-                            <td>Description for Product 1</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id})"><i
-                                        class="uil uil-trash-alt" style="font-size: 15px"></i></button>
-
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateModal"
-                                        class="btn btn-warning" style="font-size: 15px"><i
-                                        class="uil uil-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Product 2</td>
-                            <td>Category B</td>
-                            <td>Brand Y</td>
-                            <td>15.50</td>
-                            <td>75</td>
-                            <td>Description for Product 2</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id})"><i
-                                        class="uil uil-trash-alt" style="font-size: 15px"></i></button>
-
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateModal"
-                                        class="btn btn-warning" style="font-size: 15px"><i
-                                        class="uil uil-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Product 3</td>
-                            <td>Category A</td>
-                            <td>Brand Z</td>
-                            <td>12.75</td>
-                            <td>50</td>
-                            <td>Description for Product 3</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id})"><i
-                                        class="uil uil-trash-alt" style="font-size: 15px"></i></button>
-
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateModal"
-                                        class="btn btn-warning" style="font-size: 15px"><i
-                                        class="uil uil-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Product 4</td>
-                            <td>Category C</td>
-                            <td>Brand X</td>
-                            <td>9.99</td>
-                            <td>120</td>
-                            <td>Description for Product 4</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id})"><i
-                                        class="uil uil-trash-alt" style="font-size: 15px"></i></button>
-
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateModal"
-                                        class="btn btn-warning" style="font-size: 15px"><i
-                                        class="uil uil-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Product 5</td>
-                            <td>Category B</td>
-                            <td>Brand Z</td>
-                            <td>18.25</td>
-                            <td>60</td>
-                            <td>Description for Product 5</td>
-                            <td style="    display: flex;
-    justify-content: space-evenly;">
-
-                                <form action="UpdateItems.jsp" method="post">
-                                    <input type="hidden" name="id" value="${item.id}">
-                                    <button type="submit" class="btn btn-warning" style="font-size: 15px"><i
-                                            class="uil uil-edit"></i></button>
-                                </form>
-
-                                <form action="DeleteItemServlet" method="post">
-                                    <input type="hidden" name="delete" value="${item.id}">
-                                    <button type="submit" class="btn btn-danger"><i
-                                            class="uil uil-trash-alt" style="font-size: 15px"></i></button>
-                                </form>
-                            </td>
-                        </tr>--%>
 
                         <c:forEach items="${items}" var="item">
 
@@ -235,7 +143,7 @@
 
                                     <form action="DeleteItemServlet" method="post">
                                         <input type="hidden" name="delete" value="${item.id}">
-                                        <button type="submit" class="btn btn-danger"><i
+                                        <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete')"><i
                                                 class="uil uil-trash-alt" style="font-size: 15px"></i></button>
                                     </form>
                                 </td>
