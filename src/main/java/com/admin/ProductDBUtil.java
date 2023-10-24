@@ -21,7 +21,7 @@ public static boolean addproduct(String Name,String Category,String Brand,double
 		try {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
-			String sql = "insert into items(ID,Name,Category,Brand,UnitPrice,Quantity,Description) VALUES (','"+Name+"','"+Category+"','"+Brand+"','"+UnitPrice+"','"+Quantity+"','"+Description+"')";
+			String sql = "insert into items(ID,Name,Category,Brand,UnitPrice,Quantity,Description) VALUES (0,'"+Name+"','"+Category+"','"+Brand+"','"+UnitPrice+"','"+Quantity+"','"+Description+"')";
 			int rs = stmt.executeUpdate(sql);
 			
 			if(rs > 0) {
