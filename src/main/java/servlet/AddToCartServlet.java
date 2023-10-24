@@ -44,15 +44,17 @@ public class AddToCartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("username");
 				
-		System.out.println("userID:"+userID);
+		System.out.println("userID:"+itemID);
 		System.out.println(quentity);
 		// Create an instance of the CartServiceImpl
 		iCartService cartService = new CartServiceImpl();
 		
-		boolean istrue;
+		boolean istrue = false;
+		
 		
 		try {
 			istrue = cartService.getItems(itemID, quentity, userID);
+			System.out.println(istrue);
 			if(istrue == true) {
 				response.sendRedirect("home.jsp");
 			}

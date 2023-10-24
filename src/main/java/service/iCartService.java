@@ -18,7 +18,6 @@ public interface iCartService {
 	public void deleteItems(int id);
 	
 //update quantity of items in cart
-	public void updateItems(int id,int qnt);
+	public void updateItems(int id,int qnt,double total);
 	
-
 }

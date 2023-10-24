@@ -4,14 +4,16 @@ public class Items {
 	private int id;
 	private String itemImg;
 	private String name;
+	private String catergories;
 	private double price;
 	
 	
-	public Items(int id, String itemImg, String name, double price) {
+	public Items(int id, String itemImg, String name,String catergories, double price) {
 		this.id = id;
 		this.itemImg = itemImg;
 		this.name = name;
 		this.price = price;
+		this.catergories = catergories;
 	}
 	public int getId() {
 		return id;
@@ -37,11 +39,18 @@ public class Items {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+	public String getCatergories() {
+		return catergories;
+	}
+	public void setCatergories(String catergories) {
+		this.catergories = catergories;
+	}
 	@Override
 	public String toString() {
-		return "items [id=" + id + ", itemImg=" + itemImg + ", name=" + name + ", price=" + price + "]";
+		return "Items [id=" + id + ", itemImg=" + itemImg + ", name=" + name + ", catergories=" + catergories
+				+ ", price=" + price + "]";
 	}
 	
+
 
 }

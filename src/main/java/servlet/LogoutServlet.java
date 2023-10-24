@@ -6,22 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import home.CartDB;
-import service.CartServiceImpl;
-import service.iCartService;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class UpdateCartItemsServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/UpdateCartItemsServlet")
-public class UpdateCartItemsServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateCartItemsServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +28,10 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		HttpSession session = request.getSession();
+		session.removeAttribute("username");
+		session.invalidate();
+		response.sendRedirect("loginNew.jsp");
 	}
 
 	/**
@@ -39,16 +39,7 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("uitemId"));
-		int qnt = Integer.parseInt(request.getParameter("quantity"));
-		double total = Double.parseDouble(request.getParameter("quantity"));
-		
-		System.out.println("new:"+id);
-		System.out.println(qnt);
-		
-		iCartService cartService = new CartServiceImpl();
-		cartService.updateItems(id,qnt,total);
-		response.sendRedirect("cart.jsp");
+		doGet(request, response);
 	}
 
 }

@@ -19,7 +19,6 @@ public class CatergaryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println(id);
 		
 	}
 

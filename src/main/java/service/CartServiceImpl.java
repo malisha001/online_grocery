@@ -27,13 +27,14 @@ public class CartServiceImpl implements iCartService{
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
 	        // Select the item's details
-	        String sql = "SELECT itemName, price FROM item WHERE itemID = " + itemId;
+	        String sql = "SELECT Name, Unitprice FROM itemnew WHERE ID = " + itemId;
 	        rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
 
-				ItemName = rs.getString("itemName");
-				price = rs.getInt("price");
+				ItemName = rs.getString("Name");
+				price = rs.getInt("Unitprice");// change to double unite price is double in table
+				
 					
 			}
 			System.out.println(Tprice);
@@ -43,7 +44,7 @@ public class CartServiceImpl implements iCartService{
 			
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
-			String sql1 = "insert into cart values(0,'"+userID+"','"+ItemName+"','"+Quentity+"','"+Tprice+"')";
+			String sql1 = "insert into cart values(0,'"+userID+"','"+ItemName+"','"+Quentity+"','"+price+"','"+Tprice+"')";
 			int rs1 = st.executeUpdate(sql1);
 			
 			if(rs1>0) {
@@ -69,9 +70,9 @@ public class CartServiceImpl implements iCartService{
 		
 		String itemss = null;
 		int quentity = 0;
-		int price = 0;
+		double price = 0;
 		int ID = 0;
-		
+		double Tpirce=0;
 		
 		
 		try {
@@ -85,10 +86,11 @@ public class CartServiceImpl implements iCartService{
 				
 				itemss = rs.getString("itemName");
 				quentity = rs.getInt("quentity");
-				price = rs.getInt("price");
+				price = rs.getDouble("price");
 				ID  = rs.getInt("id");
+				Tpirce = rs.getDouble("Tprice");
 				
-				Cart ca  = new Cart(itemss, quentity,price,ID);
+				Cart ca  = new Cart(itemss, quentity,price,ID,Tpirce);
 				cartItems.add(ca);
 			}	
 		}
@@ -116,12 +118,12 @@ public class CartServiceImpl implements iCartService{
 	}
 
 	@Override
-	public void updateItems(int id, int qnt) {
+	public void updateItems(int id, int qnt,double total) {
 		// TODO Auto-generated method stub
 		try {
-			con = DBconnecter.getConnection();
+			con = DBconnecter.getConnection();//still working total get from front end
 			st = con.createStatement();
-			String sql4 = "UPDATE cart SET quentity = '"+qnt+"' where id= '"+id+"'";
+			String sql4 = "UPDATE cart SET quentity = '"+qnt+"',Tprice = '"+total+"' where id= '"+id+"'";
 			int rs4 = st.executeUpdate(sql4);
 		}
 		catch(Exception e) {

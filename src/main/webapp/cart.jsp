@@ -34,23 +34,24 @@
             </thead>
             <tbody>
             <c:forEach var = "cart" items = "${cartDetails}">
+
                    
                     <input type="hidden" name="book_id" value="">
                     <tr>
                         <td><p>${cart.itemName}</p></td>
                         <td><p>tt</p></td>
                            	<td class="price"><p>${cart.price}</p></td>
-                           	 <form action="UpdateServlet" method="post">
+                           	 <form action="UpdateCartItemsServlet" method="post">
                             <td><input type="number" name="quantity" value="${cart.quentity}" min="1" class="quantity-input" onchange="calculate(this)"></td>
 
-                            <td class="total">Rs.</td>
-                            <input type="hidden" name="total" value="">
+                            <td class="total">$.${cart.tprice}</td>
+                            <input type="hidden" name="total" value="${cart.tprice}">
                            
                                 <td><input type="submit" value="update" ><td>
                                	<input type="hidden" name="uitemId" value="${cart.id}">
           
                             </form>
-                            <form action="DeleteServlet" method="post">
+                            <form action="CartItemsDeleteServlet" method="post">
                                 <td><input type=submit value="delete"><td>
                                 <input type="hidden" name="itemId" value="${cart.id}">
                             </form>
@@ -68,7 +69,7 @@
                 <table>
                     <tr>
                         <td>cart sub total</td>
-                        <td id="cart-subtotal">Rs.</td>
+                        <td id="cart-subtotal">$.</td>
                     </tr>
                     <tr>
                         <td>shipping</td>
@@ -86,15 +87,15 @@
     </div>
 </body>
 <script>
-    function calculate(input) {
-        var row = input.parentNode.parentNode;
-        var price = parseFloat(row.querySelector(".price").innerHTML);
-        var quantity = parseInt(input.value);
-        var total = price * quantity;
+function calculate(input) {
+    var row = input.parentNode.parentNode;
+    var price = parseFloat(row.querySelector(".price p").textContent); // Properly extract the price
+    var quantity = parseInt(input.value);
+    var total = price * quantity;
 
-        row.querySelector(".total").innerHTML = 'Rs.' + total.toFixed(2);
-        updateCartTotal();
-    }
+    row.querySelector(".total").innerHTML = 'Rs.' + total.toFixed(2);
+    updateCartTotal();
+}
 
     function updateCartTotal() {
         var cartSubtotal = 0;

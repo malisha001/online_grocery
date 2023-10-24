@@ -129,7 +129,26 @@ boolean isCorrect = false;
 	@Override
 	public boolean customerReport(String customerName, String customerEmail, String phonenumber, String about) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean isCorrect = false;
+		 
+		 try {
+			 con = DBconnecter.getConnection();
+	    	st = con.createStatement();
+	         String sql = "insert into cutomerissue(CustomerName, CustomerEmail, phoneNumber, About) values ('"+customerName+"', '"+customerEmail+"', '"+phonenumber+"', '"+about+"')";
+			 int rs = st.executeUpdate(sql);
+			 
+			 if(rs > 0) {
+				 isCorrect =true;
+			 }
+			 else {
+				 isCorrect = false;
+			 }
+		 }
+		 catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 return isCorrect;
+			
 	}
 	//create account
 	@Override

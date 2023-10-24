@@ -3,14 +3,16 @@ package model;
 public class Cart {
 	String ItemName;
 	int Quentity;
-	int price;
+	double price;
 	int id;
+	double tprice;
 	
-	public Cart(String ItemName,int Quentity,int price,int Id) {
+	public Cart(String ItemName,int Quentity,double price,int Id,double tprice) {
 		this.ItemName = ItemName;
 		this.Quentity = Quentity;
 		this.price = price;
 		this.id = Id;
+		this.tprice = tprice;
 		// TODO Auto-generated constructor stub
 	}
 	public String getItemName() {
@@ -25,10 +27,10 @@ public class Cart {
 	public void setQuentity(int quentity) {
 		Quentity = quentity;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
@@ -38,8 +40,16 @@ public class Cart {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public double getTprice() {
+		return tprice;
+	}
+	public void setTprice(double tprice) {
+		this.tprice = tprice;
+	}
 	@Override
 	public String toString() {
-		return "cart [ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price + ", id=" + id + "]";
+		return "Cart [ItemName=" + ItemName + ", Quentity=" + Quentity + ", price=" + price + ", id=" + id + ", tprice="
+				+ tprice + "]";
 	}
+
 }
