@@ -1,6 +1,6 @@
 package com.admin;
 
-public class Person {
+public class Person implements IPerson{
 	protected int id;
 	protected String name;
 	protected String email;
@@ -27,6 +27,11 @@ public class Person {
 
 	public String getPassword() {
 		return password;
+	}
+	
+	@Override
+	public void showName() {
+		System.out.print("I am Person");
 	}
 	
 }
