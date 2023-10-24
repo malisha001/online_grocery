@@ -33,8 +33,7 @@ public class AddProductsServlet extends HttpServlet {
 
 				
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
-			dis.forward(request, response);
+			response.sendRedirect("AdminDashboard.jsp");
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
 			dis2.forward(request, response);
