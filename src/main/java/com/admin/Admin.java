@@ -7,5 +7,10 @@ public class Admin extends Person {
 		
 	}
 	
+	@Override
+	public void showName() {
+		System.out.print("I am Admin");
+	}
+	
 
 }
