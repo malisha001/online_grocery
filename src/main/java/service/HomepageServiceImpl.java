@@ -15,6 +15,7 @@ public class HomepageServiceImpl implements iHomepageService{
 	private static Statement st = null;
 	private static ResultSet rs  = null;
 	
+	//show items in homePage
 	@Override
 	public List<Items> getItemDetails() {
 		// TODO Auto-generated method stub
@@ -28,12 +29,14 @@ public class HomepageServiceImpl implements iHomepageService{
 			
 			while(rs.next()) {
 				int id = rs.getInt(1);
-				String itemImg = rs.getString(2);
-				String itemName = rs.getString(2);
-				String categoryy = rs.getString(3);
+				String name = rs.getString(2);
+				String cat = rs.getString(3);
+				String brand = rs.getString(4);
 				double price = rs.getDouble(5);
+				int qnt = rs.getInt(6);
+				String des = rs.getString(2);
 				
-				Items it = new Items(id,itemImg,itemName,categoryy,price);
+				Items it = new Items(id,name,cat,brand,price,qnt,des);
 				item.add(it);
 				
 			}
@@ -57,14 +60,16 @@ public class HomepageServiceImpl implements iHomepageService{
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				int idd = rs.getInt(1);
-				String itemImg = rs.getString(2);
-				String itemName = rs.getString(2);
-				String categoryy = rs.getString(3);
+				int id1 = rs.getInt(1);
+				String name = rs.getString(2);
+				String cat = rs.getString(3);
+				String brand = rs.getString(4);
 				double price = rs.getDouble(5);
+				int qnt = rs.getInt(6);
+				String des = rs.getString(2);
 				
-				System.out.println("service"+categoryy);
-				Items its = new Items(idd,itemImg,itemName,categoryy,price);
+				System.out.println("service"+cat);
+				Items its = new Items(id1,name,cat,brand,price,qnt,des);
 				category.add(its);	
 			}
 		}catch(Exception e) {

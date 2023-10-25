@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Customer;
 import service.CustomerServiceImpl;
 import service.iCustomerService;
 
@@ -32,11 +34,11 @@ public class CustomerUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("custommer updateeeeeeee");
 		String id = request.getParameter("cusid");
 		String fname = request.getParameter("first_name");
 		String lname = request.getParameter("last_name");
@@ -44,16 +46,18 @@ public class CustomerUpdateServlet extends HttpServlet {
 		String phone = request.getParameter("phone_number");
 		String password = request.getParameter("password");
 		
-		System.out.println(password);
+		
 		iCustomerService CustomerService = new CustomerServiceImpl();
 		
 		boolean isTrue;
 		
 		isTrue = CustomerService.Updatecustomer(id, fname, lname, email, phone, password);
-		
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("loginNew.jsp");
-			dis.forward(request, response);
+			
+//			List<Customer> cusDisplay = CustomerService.getcustomerprofile(email);
+//			request.setAttribute("cusDisplay", cusDisplay);
+//			request.getRequestDispatcher("success.jsp").forward(request, response);
+			response.sendRedirect("home.jsp");
 		}
 		else {
 			RequestDispatcher dis = request.getRequestDispatcher("unsuccess.jsp");

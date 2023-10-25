@@ -29,7 +29,7 @@ public class RetrieveCartServlet extends HttpServlet {
 		// Call the getCartDetails method to retrieve the user's cart
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
-		System.out.println("newswevlet:"+username);
+		System.out.println("newswevletTTTTTTTTTTT:");
 		
 		try {
 			List<Cart>cartDetails = cartService.getCartDetails(username);

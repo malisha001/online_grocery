@@ -48,11 +48,12 @@ public class CustomerIssueServlet extends HttpServlet {
 		iCustomerService CustomerService = new CustomerServiceImpl();
 		boolean IsTrue;
 		IsTrue = CustomerService.customerReport(customerName, customerEmail, phonenumber, about);
-				
+		System.out.println("issure servlettttttt");
 		
 		if(IsTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("useraccount.jsp");
-			dis.forward(request, response);
+			response.sendRedirect("home.jsp");
+//			RequestDispatcher dis = request.getRequestDispatcher("useraccount.jsp");
+//			dis.forward(request, response);
 		}
 		else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("LoginNew.jsp");

@@ -27,15 +27,27 @@ public class CustomerServiceImpl implements iCustomerService{
 			System.out.println(userN);
 			
 			String sql = "SELECT * FROM customerprofile WHERE email = '" + userN + "' AND password = '" + passw + "'";
+			String sql1 = "SELECT * FROM admin WHERE email = '" + userN + "' AND password = '" + passw + "'";
 			
 			rs = st.executeQuery(sql);
 			result  = rs.next();
+			if(result) {
+				return result;
+			}
+			else {
+				rs = st.executeQuery(sql1);
+				result  = rs.next();
+				return result;
+			}
+			
+			
 		}
 		catch(Exception e) {
 			
 		}
 		System.out.println(result);
 		return result;
+		
 	}
 	
 	//retrieve customer details
@@ -103,7 +115,7 @@ boolean IsSuccess = false;
 	@Override
 	public boolean Updatecustomer(String id, String fname, String lname, String email, String phone, String password) {
 boolean isCorrect = false;
-    	
+		System.out.println("custommer updateeeeeeee");
     	try {
     		con = DBconnecter.getConnection();
     		st = con.createStatement();
