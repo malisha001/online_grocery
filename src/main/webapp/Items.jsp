@@ -23,7 +23,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-bASq_TMp6SDNjUmz89fWJ4rpWc68W5P9JdzPIxrcg3OKMgYJLZM9q0M22_jxemTE_E&usqp=CAU"
                      alt="Profile Pic">
             </div>
-            <div class="fs-3 p-5 fw-bold" style="text-align: center">
+           <div class="fs-3 p-5 fw-bold" style="text-align: center;color: white">
                 <c:forEach var="admin" items="${adminDetails}">
                     ${admin.name}<br/>
                     ${admin.email}<br/>

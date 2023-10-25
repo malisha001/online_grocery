@@ -15,29 +15,31 @@ public class ProductDBUtil {
 	
 	
 	
-	     
-public static boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String Description ) {		
-	boolean isSuccess = false;
-		try {
-			con = DBConnect.getConnection();
-			stmt = con.createStatement();
-			String sql = "insert into items(ID,Name,Category,Brand,UnitPrice,Quantity,Description) VALUES (0,'"+Name+"','"+Category+"','"+Brand+"','"+UnitPrice+"','"+Quantity+"','"+Description+"')";
-			int rs = stmt.executeUpdate(sql);
-			
-			if(rs > 0) {
-				isSuccess = true;
-			} else {
-				isSuccess = false;
+	     // method to insert data to the items DB
+		public static boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String Description ) {		
+			boolean isSuccess = false;
+				try {
+					con = DBConnect.getConnection();
+					stmt = con.createStatement();
+					String sql = "insert into items(ID,Name,Category,Brand,UnitPrice,Quantity,Description) VALUES (0,'"+Name+"','"+Category+"','"+Brand+"','"+UnitPrice+"','"+Quantity+"','"+Description+"')";
+					int rs = stmt.executeUpdate(sql);
+					
+					if(rs > 0) {
+						isSuccess = true;
+					} else {
+						isSuccess = false;
+					}
+					
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+			return isSuccess;
+				
 			}
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
 		
-	return isSuccess;
-		
-	}
+		// method to update data in the items DB
 
 	    public static boolean updateProducts(String id,String name, String cat, String brand, String price, String qty, String dis ) {
 	    	boolean isSuccess = false;
@@ -66,45 +68,8 @@ public static boolean addproduct(String Name,String Category,String Brand,double
 	    }
 	    
 	    
-	    
-	    
-	    public static List<Items> getItemDetails(String id){
-	    	
-	    	int convertedID  = Integer.parseInt(id);
-	    	
-	    	ArrayList<Items> item = new ArrayList<>();
-	    	
-	    	try {
-	    		con = DBConnect.getConnection();
-	            stmt = con.createStatement();
-	            String sql = "Select * From items Where id = '"+convertedID+"'";
-	            resultSet = stmt.executeQuery(sql);
-	            
-	            while(resultSet.next()) {
-	            	int ID = resultSet.getInt(1);
-	                String Name = resultSet.getString(2);
-	                String Category = resultSet.getString(3);
-	                String Brand = resultSet.getString(4);
-	                double UnitPrice = resultSet.getDouble(5);
-	                int Quantity = resultSet.getInt(6);
-	                String Description = resultSet.getString(7);
-	                
-	                Items i = new Items(ID, Name, Category, Brand, UnitPrice, Quantity, Description);
-	                item.add(i);
-	            			
-	            }
-	            
-	    	}
-	    	catch(Exception e){
-	    		e.printStackTrace();
 
-	    	}
-	    	
-	    	
-	    	return item;
-	    }
-	    
-	    
+	 // method to delete data in the items DB
 	    public static boolean deleteProducts(String id) {
 	    	boolean isSuccess = false;
 	    	
@@ -134,6 +99,8 @@ public static boolean addproduct(String Name,String Category,String Brand,double
 	    	
 	    }
 	    
+	    
+	 // method to retrieve data from the items DB
 	    public static List<Items> getAllItemDetails(){
 	    		    	
 	    	ArrayList<Items> item = new ArrayList<>();
@@ -167,5 +134,6 @@ public static boolean addproduct(String Name,String Category,String Brand,double
 	    	
 	    	return item;
 	    }
+	    
 }
 

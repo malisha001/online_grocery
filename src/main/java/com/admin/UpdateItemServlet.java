@@ -1,6 +1,7 @@
 package com.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +23,10 @@ public class UpdateItemServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String cat = request.getParameter("cat");
@@ -41,11 +46,10 @@ public class UpdateItemServlet extends HttpServlet {
 		}
 		else {
 
-			List<Items> itemDetails = ProductDBUtil.getItemDetails(id);
-			request.setAttribute("itemDetails", itemDetails);
-			
-			RequestDispatcher req = request.getRequestDispatcher("Items.jsp");
-			req.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Item Update Unsucessful! Try Again.');");
+			out.println("location = 'ItemsServlet'");
+			out.println("</script>");
 		}
 
 	}

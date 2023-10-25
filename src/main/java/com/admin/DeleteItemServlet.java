@@ -1,6 +1,7 @@
 package com.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,9 @@ public class DeleteItemServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		String id = request.getParameter("delete");
 		System.out.print(id);
 		boolean isTrue;
@@ -28,11 +32,10 @@ public class DeleteItemServlet extends HttpServlet {
 			response.sendRedirect("ItemsServlet");
 		}
 		else {
-			List<Items> iDetails = ProductDBUtil.getItemDetails(id);
-			request.setAttribute("iDetails", iDetails);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Items.jsp");
-			dispatcher.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Item Delete Unsucessful! Try Again.');");
+			out.println("location = 'ItemsServlet'");
+			out.println("</script>");
 		}
 	
 	}
