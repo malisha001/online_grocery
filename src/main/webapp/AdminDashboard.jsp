@@ -19,13 +19,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 300px;
+      width: 500px;
       padding: 20px;
       background-color: #fff;
-      border: 1px solid #ccc;
+      border: 3px solid #000;
       border-radius: 4px;
       z-index: 1;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-size: 1.5rem;
 }
 </style>
 </head>
@@ -158,28 +159,50 @@
 
                     <div class="d-grid gap-2 d-md-flex justify-content-between">
                      <div id="add-product" class="add-product">
-	    <form action = "insert" method = "post">
-	           <fieldset>
-	                     <legend>Add New Product</legend>
-	                             
-	                              <label for ="name">Product Name</label><input type ="text" name = "Name"><br>
-	                              <label for ="cat">Category </label>
-	                                         <select id ="cat" name = "Category">
+	    				<form action = "insert" method = "post">
+	           				<fieldset>
+	                     	<legend>Add New Product</legend>
+	                             <table style="width:100%">
+						<tr style="height:60px">
+						<td><label for ="name">Product Name</label></td>
+						<td><input type ="text" name = "Name"></td>
+						</tr>
+						<tr style="height:60px">
+						<td><label for ="cat">Category </label></td>
+						<td><select id ="cat" name = "Category">
 	                                                <option value= "dairy">Dairy</option>
 	                                                <option value= "Fruits">Fruits</option>
 	                                                <option value= "Vegetables">Vegetables</option>
 	                                                <option value= "Bakery">Bakery</option>
 	                                                <option value= "Rice">Rice</option>                               
-	                                         </select><br>
-	                             <label for ="brand">Brand Name </label><input type ="text" name = "Brand"><br>
-	                             <label for ="price">Unit Price </label><input type ="text" name = "UnitPrice"><br>
-	                             <label for ="qty">Quantity </label><input type ="text" name = "Quantity"><br>
-	                             <label for ="description">Description</label> <br><textarea rows= "5" cols="20" name = "Description"></textarea><br><br>
-	                             <input type ="submit" value ="Add Product">
-	                             <button type="button" id="hide-form" onclick="hide()">Cancel</button>
-	          </fieldset>
-	      </form>
-    </div>
+	                                         </select></td>
+						</tr>
+						<tr style="height:60px">
+						<td><label for ="brand">Brand Name </label></td>
+						<td><input type ="text" name = "Brand"></td>
+						</tr>
+						<tr style="height:60px">
+						<td> <label for ="price">Unit Price </label></td>
+						<td><input type ="text" name = "UnitPrice"></td><br><br>
+						</tr>
+						<tr style="height:60px">
+						<td><label for ="qty">Quantity </label></td>
+						<td><input type ="text" name = "Quantity"></td>
+						</tr>
+						<tr style="height:60px">
+						<td><label for ="description">Description</label></td>
+						<td><textarea rows= "2" cols="20" name = "Description"></textarea></td>
+						</tr>
+						
+						
+						
+					</table>
+	                           
+	                             <input type ="submit" style="height: 3rem; font-size: 1.5rem;color: white; background-color: #e67e22" value ="Add Product">
+	                             <button type="button" id="hide-form" style="height: 3rem; font-size: 1.5rem;color: white; background-color: #e67e22" onclick="hide()">Cancel</button>
+	          				</fieldset>
+	      				</form>
+    				</div>
    
                         <div>
                             <button type="button" class="btn btn-success me-md-2 btn-lg" onclick="show()"

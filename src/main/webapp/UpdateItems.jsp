@@ -122,7 +122,7 @@
 					</table>
 				
 					
-		            	<input type = "submit" name = "submit" style="height: 3rem; font-size: 1.5rem;color: white; background-color: #e67e22"; value = "Update Items"><br>
+		            	<input type = "submit" name = "submit" style="height: 3rem; font-size: 1.5rem;color: white; background-color: #e67e22" value = "Update Items"><br>
 	
 				</form>
 			</div>

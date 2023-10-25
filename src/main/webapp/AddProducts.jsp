@@ -24,7 +24,7 @@
                              <label for ="price">Unit Price </label><input type ="text" name = "UnitPrice"><br>
                              <label for ="qty">Quantity </label><input type ="text" name = "Quantity"><br>
                              <label for ="description">Description</label> <br><textarea rows= "5" cols="20" name = "Description"></textarea><br><br>
-                             <input type ="submit" value ="Add Product">
+                             <input type ="submit" style="height: 3rem; font-size: 1.5rem;color: white; background-color: #e67e22" value ="Add Product">
           </fieldset>
       </form>
 
