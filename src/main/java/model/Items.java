@@ -3,20 +3,22 @@ package model;
 public class Items {
 	private int id;
 	private String name;
-	private String catergories;
+	private String category;
 	private String  brand;
 	private double price;
 	private int quantity;
 	private String description;
+	private String img;
 	
-	public Items(int id,String name,String catergories,String  brand, double price,int quantity,String description) {
+	public Items(int id,String name,String catergories,String  brand, double price,int quantity,String description,String img) {
 		this.id = id;
 		this.brand = brand;
 		this.name = name;
 		this.price = price;
-		this.catergories = catergories;
+		this.category = catergories;
 		this.quantity = quantity;
 		this.description = description;
+		this.img = img;
 	}
 	public int getId() {
 		return id;
@@ -37,10 +39,10 @@ public class Items {
 		this.price = price;
 	}
 	public String getCatergories() {
-		return catergories;
+		return category;
 	}
 	public void setCatergories(String catergories) {
-		this.catergories = catergories;
+		this.category = catergories;
 	}
 	
 	public int getQuantity() {
@@ -61,10 +63,18 @@ public class Items {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	@Override
 	public String toString() {
-		return "Items [id=" + id + ", name=" + name + ", catergories=" + catergories + ", brand=" + brand + ", price="
-				+ price + ", quantity=" + quantity + ", description=" + description + "]";
+		return "Items [id=" + id + ", name=" + name + ", category=" + category + ", brand=" + brand + ", price=" + price
+				+ ", quantity=" + quantity + ", description=" + description + ", img=" + img + "]";
 	}
+	
 	
 }

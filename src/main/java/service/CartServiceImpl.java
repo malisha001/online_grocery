@@ -118,10 +118,13 @@ public class CartServiceImpl implements iCartService{
 	}
 
 	@Override
-	public void updateItems(int id, int qnt,double total) {
+	public void updateItems(int id, int qnt,double total,double price) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("succes qnt"+qnt);
+		total = price*qnt;
 		try {
-			con = DBconnecter.getConnection();//still working total get from front end
+			con = DBconnecter.getConnection();
 			st = con.createStatement();
 			String sql4 = "UPDATE cart SET quentity = '"+qnt+"',Tprice = '"+total+"' where id= '"+id+"'";
 			int rs4 = st.executeUpdate(sql4);
@@ -130,6 +133,27 @@ public class CartServiceImpl implements iCartService{
 			
 		}
 		
+	}
+
+	@Override
+	public int calculate(String mail) {
+		int totall = 0;
+		try {
+			
+			con = DBconnecter.getConnection();
+			st = con.createStatement();
+			String sql = "SELECT Tprice FROM cart WHERE userId = " + mail;
+	        rs = st.executeQuery(sql);
+	        
+	        while (rs.next()) {
+	            int price = rs.getInt("Tprice");
+	            totall += price; // Add the price to the total
+	        }
+		}catch(Exception e) {
+			
+		}
+		
+		return totall;
 	}
 
 }

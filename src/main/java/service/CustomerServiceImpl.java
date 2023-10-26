@@ -17,9 +17,11 @@ public class CustomerServiceImpl implements iCustomerService{
 	
 	//validate customer
 	@Override
-	public boolean validate(String userN, String passw) {
+	public char validate(String userN, String passw) {
 		// TODO Auto-generated method stub
-		boolean result = false;
+		
+		boolean result;
+		char log = 'b';
 		try {
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
@@ -30,23 +32,25 @@ public class CustomerServiceImpl implements iCustomerService{
 			String sql1 = "SELECT * FROM admin WHERE email = '" + userN + "' AND password = '" + passw + "'";
 			
 			rs = st.executeQuery(sql);
-			result  = rs.next();
-			if(result) {
-				return result;
-			}
-			else {
-				rs = st.executeQuery(sql1);
-				result  = rs.next();
-				return result;
-			}
+		    result = rs.next();
+
+		    if (result) {
+		        log = 'c'; // Set log to 'c' for customer authentication
+		    } else {
+		        rs = st.executeQuery(sql1);
+		        result = rs.next();
+		        if (result) {
+		            log = 'a'; // Set log to 'a' for admin authentication
+		        }
+		    }
 			
 			
 		}
 		catch(Exception e) {
 			
 		}
-		System.out.println(result);
-		return result;
+		System.out.println(log);
+		return log;
 		
 	}
 	
@@ -73,7 +77,13 @@ public class CustomerServiceImpl implements iCustomerService{
 				   String password = rs.getString(6);
 				   
 				   System.out.println("im now getconncetion dbutil :" + fname);
-				   Customer c = new Customer(id, fname, lname, email, phone, password);
+				   Customer c = Customer.getInstance();
+				   c.setFirstname(fname);
+				   c.setLastname(lname);
+				   c.setId(id);
+				   c.setEmail(email);
+				   c.setPhonenumber(phone);
+				   c.setPassword(password);
 				   cus.add(c);
 			   }
 			   
@@ -184,6 +194,31 @@ boolean isCorrect = false;
    		 e.printStackTrace();
    	 }
    	 return isCorrect;
+	}
+
+	@Override
+	public boolean insertpayment(String fname, String email, String address, String city, String zip, String cardName,
+			String cardNo, String expM, String expY, String cvv) {
+		boolean isCorrect = false;
+		 
+		 try {
+			con = DBconnecter.getConnection();
+			st = con.createStatement();
+	         String sql = "insert into paymentcustomer values('"+fname+"', '"+email+"', '"+address+"', '"+city+"', '"+zip+"', '"+cardName+"','"+cardNo+"', '"+expM+"','"+expY+"', '"+cvv+"')";
+			 int rs = st.executeUpdate(sql);
+			 
+			 if(rs > 0) {
+				 isCorrect =true;
+			 }
+			 else {
+				 isCorrect = false;
+			 }
+		 }
+		 catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 return isCorrect;
+
 	}
 
 }

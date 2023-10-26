@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +26,13 @@ public class loginServlet extends HttpServlet {
 		String username = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		iCustomerService CustomerService = new CustomerServiceImpl();
 		try {
-			boolean l = CustomerService.validate(username, pwd);
-			if(l){
+			char l = CustomerService.validate(username, pwd);
+			if(l == 'c'){
 				HttpSession session = request.getSession();
 				session.setAttribute("username",username);
 				
@@ -37,8 +42,15 @@ public class loginServlet extends HttpServlet {
 				response.sendRedirect("home.jsp");
 				
 			}
+			else if(l == 'a'){
+				response.sendRedirect("AdminDashboard.jsp");
+				
+			}
 			else {
-				response.sendRedirect("loginNew.jsp");
+				out.println("<script type='text/javascript'>");
+		    	out.println("alert('Your username and password is incorrect');");
+		    	out.println("location = 'loginNew.jsp'");
+		    	out.println("</script>");
 			}
 		}
 		catch(Exception e) {

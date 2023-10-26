@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.admin.ProductDBUtil;
+
+import service.*;
+
 
 /**
  * Servlet implementation class AdminAddProductsServlet
@@ -33,28 +35,25 @@ public class AdminAddProductsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String Name = request.getParameter("Name");
 		String Category = request.getParameter("Category");
 		String Brand = request.getParameter("Brand");
 		String UnitPrice = request.getParameter("UnitPrice");
 		String Quantity = request.getParameter("Quantity");
+		String img = request.getParameter("img");
 		String Description = request.getParameter("Description");
 		
 		double cUnitPrice = Double.parseDouble(UnitPrice);
 		int cQuantity = Integer.parseInt(Quantity);
 		
 		boolean isTrue;
-		
-		isTrue = ProductDBUtil.addproduct(Name,Category,Brand, cUnitPrice,cQuantity,Description);
+		iAdminService AdminService = new AdminServiceImpl();
+		isTrue = AdminService.addproduct(Name,Category,Brand, cUnitPrice,cQuantity,img,Description);
 
 				
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("AdminDashboard.jsp");
 			dis.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");

@@ -11,6 +11,7 @@
 	<meta charset="ISO-8859-1">
 </head>
 <body>
+
 	<div class="frame-login">
         <form action="loginServlet" method="post">
             <h1>Login</h1>
@@ -28,5 +29,6 @@
             </div>
         </form>
     </div>
+    
 </body>
 </html>

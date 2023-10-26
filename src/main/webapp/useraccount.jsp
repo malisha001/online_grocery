@@ -20,14 +20,13 @@
 
 <c:if test="${not empty cusDisplay}">
     <c:forEach var="cus" items="${cusDisplay}"> 
-    
-        <c:set var="id" value="${cus.id}"/>
+    <c:set var="id" value="${cus.id}"/>
         <c:set var="fname" value="${cus.firstname}"/>
         <c:set var="lname" value="${cus.lastname}"/>
         <c:set var="email" value="${cus.email}"/>
         <c:set var="phone" value="${cus.phonenumber}"/>
         <c:set var="password" value="${cus.password}"/>
-    
+
         <h2>User Profile</h2>
         
         <div class="main-card">
@@ -38,7 +37,7 @@
             </ul>
             
             <div class="form-card section" id="form-card">
-                <form action="#" method="post">
+                <form action="CustomerRetriveServlet" method="post">
                     <input type="hidden" name="id" value="${id}">
                     
                     <label for="first_name">First Name:</label>

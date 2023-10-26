@@ -1,6 +1,9 @@
 package model;
 
 public class Customer {
+
+	private static Customer instance;
+	
 	private int id;
 	private String firstname;
 	private String lastname;
@@ -8,15 +11,43 @@ public class Customer {
 	private String phonenumber;
 	private String password;
 
-	public Customer(int id, String firstname, String lastname, String email, String phonenumber, String password) {
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
-		this.phonenumber = phonenumber;
-		this.password = password;
-
+	private Customer() {}
+	
+	public static Customer getInstance() {
+		if(instance == null) {
+			synchronized(Customer.class){
+				if(instance == null) {
+					instance = new Customer();
+				}
+			}
+		}
+		return instance;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}

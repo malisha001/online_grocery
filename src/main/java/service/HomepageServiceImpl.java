@@ -34,9 +34,10 @@ public class HomepageServiceImpl implements iHomepageService{
 				String brand = rs.getString(4);
 				double price = rs.getDouble(5);
 				int qnt = rs.getInt(6);
-				String des = rs.getString(2);
+				String des = rs.getString(8);
+				String img = rs.getString(7);
 				
-				Items it = new Items(id,name,cat,brand,price,qnt,des);
+				Items it = new Items(id,name,cat,brand,price,qnt,des,img);
 				item.add(it);
 				
 			}
@@ -66,10 +67,11 @@ public class HomepageServiceImpl implements iHomepageService{
 				String brand = rs.getString(4);
 				double price = rs.getDouble(5);
 				int qnt = rs.getInt(6);
-				String des = rs.getString(2);
+				String des = rs.getString(8);
+				String img = rs.getString(7);
 				
 				System.out.println("service"+cat);
-				Items its = new Items(id1,name,cat,brand,price,qnt,des);
+				Items its = new Items(id1,name,cat,brand,price,qnt,des,img);
 				category.add(its);	
 			}
 		}catch(Exception e) {

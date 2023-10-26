@@ -1,27 +1,30 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.CartDB;
-import service.CartServiceImpl;
-import service.iCartService;
+import model.Items;
+import service.AdminServiceImpl;
+import service.iAdminService;
 
 /**
- * Servlet implementation class UpdateCartItemsServlet
+ * Servlet implementation class AdminDeletePServlet
  */
-@WebServlet("/UpdateCartItemsServlet")
-public class UpdateCartItemsServlet extends HttpServlet {
+@WebServlet("/AdminDeletePServlet")
+public class AdminDeletePServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateCartItemsServlet() {
+    public AdminDeletePServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +34,7 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -39,20 +42,23 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("uitemId"));
-		int qnt = Integer.parseInt(request.getParameter("quantity"));
-		double total = Double.parseDouble(request.getParameter("total"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		String email = request.getParameter("uitemId");
-		System.out.println("total:"+total);
-
+		String id = request.getParameter("delete");
 		
-		iCartService cartService = new CartServiceImpl();
+		boolean isTrue;
 		
-		cartService.calculate(email);
-		cartService.updateItems(id,qnt,total,price);
+		iAdminService AdminService = new AdminServiceImpl();
+		isTrue = AdminService.deleteProducts(id);
 		
-		response.sendRedirect("cart.jsp");
+		if(isTrue == true) {
+			response.sendRedirect("AdminRetrievePServlet");
+		}
+		else {
+//			List<Items> iDetails = AdminService.getItemDetails(id);
+//			request.setAttribute("iDetails", iDetails);
+//			
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("Items.jsp");
+//			dispatcher.forward(request, response);
+		}
 	}
 
 }

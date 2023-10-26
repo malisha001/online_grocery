@@ -54,10 +54,10 @@ public class CustomerUpdateServlet extends HttpServlet {
 		isTrue = CustomerService.Updatecustomer(id, fname, lname, email, phone, password);
 		if(isTrue == true) {
 			
-//			List<Customer> cusDisplay = CustomerService.getcustomerprofile(email);
-//			request.setAttribute("cusDisplay", cusDisplay);
-//			request.getRequestDispatcher("success.jsp").forward(request, response);
-			response.sendRedirect("home.jsp");
+			List<Customer> cusDisplay = CustomerService.getcustomerprofile(email);
+			request.setAttribute("cusDisplay", cusDisplay);
+			request.getRequestDispatcher("useraccount.jsp").forward(request, response);
+
 		}
 		else {
 			RequestDispatcher dis = request.getRequestDispatcher("unsuccess.jsp");

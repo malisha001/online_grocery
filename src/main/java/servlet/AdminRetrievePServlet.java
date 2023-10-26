@@ -1,27 +1,29 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.CartDB;
-import service.CartServiceImpl;
-import service.iCartService;
+import model.Items;
+import service.AdminServiceImpl;
+import service.iAdminService;
 
 /**
- * Servlet implementation class UpdateCartItemsServlet
+ * Servlet implementation class AdminRetrievePServlet
  */
-@WebServlet("/UpdateCartItemsServlet")
-public class UpdateCartItemsServlet extends HttpServlet {
+@WebServlet("/AdminRetrievePServlet")
+public class AdminRetrievePServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateCartItemsServlet() {
+    public AdminRetrievePServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +34,13 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		iAdminService AdminService = new AdminServiceImpl();
+		
+		List<Items> Items = AdminService.getAllItemDetails();
+        request.setAttribute("items", Items);
+        System.out.println("admin retrive");
+        System.out.println(Items);
+        request.getRequestDispatcher("Items.jsp").forward(request, response);
 	}
 
 	/**
@@ -39,20 +48,7 @@ public class UpdateCartItemsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("uitemId"));
-		int qnt = Integer.parseInt(request.getParameter("quantity"));
-		double total = Double.parseDouble(request.getParameter("total"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		String email = request.getParameter("uitemId");
-		System.out.println("total:"+total);
 
-		
-		iCartService cartService = new CartServiceImpl();
-		
-		cartService.calculate(email);
-		cartService.updateItems(id,qnt,total,price);
-		
-		response.sendRedirect("cart.jsp");
 	}
 
 }

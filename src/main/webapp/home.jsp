@@ -133,7 +133,7 @@
 	                        <a href="#"><i class="uil uil-heart-sign"></i></a>
 	                        <a href="#"><i class="uil uil-eye"></i></a>
 	                    </div>
-	                    <img src="image/Banana-Single.jpg" alt="" height="100px">
+	                    <img src="${itemmm.img}" alt="" height="100px">
 	                    <h3>${itemmm.name}</h3>
 	                    <div class="price">$10.0 <span>$13.20</span></div>
 	                    <div class="quentity">
