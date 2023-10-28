@@ -24,17 +24,22 @@ public class AddProductsServlet extends HttpServlet {
 		String Quantity = request.getParameter("Quantity");
 		String Description = request.getParameter("Description");
 		
+		// Parse UnitPrice and Quantity to their respective data types
 		double cUnitPrice = Double.parseDouble(UnitPrice);
 		int cQuantity = Integer.parseInt(Quantity);
 		
 		boolean isTrue;
 		
+		// Call a method to add a product to the items database
 		isTrue = ProductDBUtil.addproduct(Name,Category,Brand, cUnitPrice,cQuantity,Description);
 
 				
+		//Redirect to the AdminDashboard.jsp when successfully added
 		if(isTrue == true) {
 			response.sendRedirect("AdminDashboard.jsp");
 		}else {
+			
+			// Forward the request to unsuccess.jsp when product addition is not successful
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
 			dis2.forward(request, response);
 		}

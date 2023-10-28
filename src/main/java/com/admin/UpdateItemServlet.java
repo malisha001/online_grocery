@@ -23,7 +23,7 @@ public class UpdateItemServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		// Create a PrintWriter to send response back to the client
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
@@ -45,7 +45,7 @@ public class UpdateItemServlet extends HttpServlet {
 
 		}
 		else {
-
+			// If update is unsuccessful, display an error message and redirect back to ItemsServlet
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Item Update Unsucessful! Try Again.');");
 			out.println("location = 'ItemsServlet'");

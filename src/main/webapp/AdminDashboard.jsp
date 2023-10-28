@@ -165,7 +165,7 @@
 	                             <table style="width:100%">
 						<tr style="height:60px">
 						<td><label for ="name">Product Name</label></td>
-						<td><input type ="text" name = "Name"></td>
+						<td><input type ="text" name = "Name" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td><label for ="cat">Category </label></td>
@@ -179,15 +179,15 @@
 						</tr>
 						<tr style="height:60px">
 						<td><label for ="brand">Brand Name </label></td>
-						<td><input type ="text" name = "Brand"></td>
+						<td><input type ="text" name = "Brand" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td> <label for ="price">Unit Price </label></td>
-						<td><input type ="text" name = "UnitPrice"></td><br><br>
+						<td><input type ="text" name = "UnitPrice" required></td><br><br>
 						</tr>
 						<tr style="height:60px">
 						<td><label for ="qty">Quantity </label></td>
-						<td><input type ="text" name = "Quantity"></td>
+						<td><input type ="text" name = "Quantity" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td><label for ="description">Description</label></td>

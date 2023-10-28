@@ -16,7 +16,7 @@ public class AdminDBUtil {
 	
 	private static boolean isSucess = false;
 	
-	public static boolean validate(String name, String Email, String password ){
+	public static boolean validate(String Email, String password ){
 			
 		//validate
 		
@@ -25,7 +25,7 @@ public class AdminDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 
-			String sql = "select * from admin where Name = '"+name+"' and Email = '"+Email+"' and Password='"+password+"'";
+			String sql = "select * from admin where Email = '"+Email+"' and Password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {

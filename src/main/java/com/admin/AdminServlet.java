@@ -19,8 +19,7 @@ public class AdminServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username = request.getParameter("uid");
-		String email = request.getParameter("mail");
+		String email = request.getParameter("uid");
 		String password = request.getParameter("pass");
 		boolean isSucess = false;
 		
@@ -28,7 +27,7 @@ public class AdminServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		try {
-		      isSucess = AdminDBUtil.validate(username, email, password);
+		      isSucess = AdminDBUtil.validate(email, password);
 		      if(isSucess) {
 		    	  response.sendRedirect("AdminDashboard.jsp");
 		      } else {

@@ -28,10 +28,13 @@ public class DeleteItemServlet extends HttpServlet {
 		
 		isTrue = ProductDBUtil.deleteProducts(id);
 		
+		//Redirect to the ItemsServlet when successfully deleted
 		if(isTrue == true) {
 			response.sendRedirect("ItemsServlet");
 		}
 		else {
+			
+		    // If deletion is unsuccessful, display an error message and redirect back to ItemsServlet
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Item Delete Unsucessful! Try Again.');");
 			out.println("location = 'ItemsServlet'");
