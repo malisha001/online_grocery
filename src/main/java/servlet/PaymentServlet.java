@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,34 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import service.CustomerServiceImpl;
 import service.iCustomerService;
 
-/**
- * Servlet implementation class PaymentServlet
- */
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public PaymentServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		String fname = request.getParameter("fullname");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
@@ -51,25 +42,16 @@ public class PaymentServlet extends HttpServlet {
 		String expY = request.getParameter("exp-year");
 		String cvv = request.getParameter("cvv");
 	
-		
-		System.out.println("hi" + fname);
-		System.out.println("hi" + email);
-		System.out.println("hi" + address);
-		System.out.println("hi" + city);
-		System.out.println("hi" + zip);
-		System.out.println("hi" + cardName);
-		System.out.println("hi" + cardNo);
-		System.out.println("hi" + expM);
-		System.out.println("hi" + expY);
-		System.out.println("hi" + cvv);
 		boolean IsTrue;
 		iCustomerService CustomerService = new CustomerServiceImpl();
 		
 		IsTrue = CustomerService.insertpayment(fname, email, address, city, zip, cardName, cardNo, expM, expY, cvv);
 		
 		if(IsTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
-			dis.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('item add succes fully.');");
+			out.println("location = 'home.jsp'");
+	    	out.println("</script>");
 		}
 		else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");

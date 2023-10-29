@@ -1,6 +1,6 @@
 package model;
 
-public class person {
+public class person implements iperson{
 	protected int id;
 	protected String name;
 	protected String email;
@@ -43,6 +43,11 @@ public class person {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public void showName() {
+		System.out.print("I am Person");
+		
 	}
 }
 

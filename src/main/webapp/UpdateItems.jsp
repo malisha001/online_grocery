@@ -92,27 +92,27 @@
 						</tr>
 						<tr style="height:60px">
 						<td>Item Name</td>
-						<td><input type = "text" name= "name" value = "<%= name%>"></td>
+						<td><input type = "text" name= "name" value = "<%= name%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Category</td>
-						<td><input type = "text" name= "cat" value = "<%= category%>"></td>
+						<td><input type = "text" name= "cat" value = "<%= category%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Brand</td>
-						<td><input type = "text" name= "brand" value = "<%= brand%>"></td><br><br>
+						<td><input type = "text" name= "brand" value = "<%= brand%>" required></td><br><br>
 						</tr>
 						<tr style="height:60px">
 						<td>Unit Price</td>
-						<td><input type = "text" name= "price" value = "<%= price%>"></td>
+						<td><input type = "text" name= "price" value = "<%= price%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Quantity</td>
-						<td><input type = "text" name= "qty" value = "<%= qty%>"></td>
+						<td><input type = "text" name= "qty" value = "<%= qty%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Description</td>
-						<td><input type = "text" name= "dis" value = "<%= description%>"></td>
+						<td><input type = "text" name= "dis" value = "<%= description%>" required></td>
 						</tr>
 						
 						

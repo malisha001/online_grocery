@@ -13,7 +13,7 @@ public class Cart {
 		this.price = price;
 		this.id = Id;
 		this.tprice = tprice;
-		// TODO Auto-generated constructor stub
+
 	}
 	public String getItemName() {
 		return ItemName;

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,26 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import service.*;
 
 
-/**
- * Servlet implementation class AdminAddProductsServlet
- */
 @WebServlet("/AdminAddProductsServlet")
 public class AdminAddProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public AdminAddProductsServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,20 +35,22 @@ public class AdminAddProductsServlet extends HttpServlet {
 		String img = request.getParameter("img");
 		String Description = request.getParameter("Description");
 		
-		double cUnitPrice = Double.parseDouble(UnitPrice);
-		int cQuantity = Integer.parseInt(Quantity);
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
 		
 		boolean isTrue;
 		iAdminService AdminService = new AdminServiceImpl();
-		isTrue = AdminService.addproduct(Name,Category,Brand, cUnitPrice,cQuantity,img,Description);
+		isTrue = AdminService.addproduct(Name,Category,Brand, UnitPrice,Quantity,img,Description);
 
 				
 		if(isTrue == true) {
 			RequestDispatcher dis = request.getRequestDispatcher("AdminDashboard.jsp");
 			dis.forward(request, response);
 		}else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
-			dis2.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Item addd Unsucessful! Try Again.');");
+			out.println("location = 'AdminDashboard.jsp'");
+	    	out.println("</script>");
 		}
 	}
 

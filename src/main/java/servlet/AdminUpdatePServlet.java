@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,33 +16,26 @@ import model.Items;
 import service.AdminServiceImpl;
 import service.iAdminService;
 
-/**
- * Servlet implementation class AdminUpdatePServlet
- */
+
 @WebServlet("/AdminUpdatePServlet")
 public class AdminUpdatePServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public AdminUpdatePServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		// Create a PrintWriter to send response back to the client
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String cat = request.getParameter("cat");
@@ -54,19 +48,21 @@ public class AdminUpdatePServlet extends HttpServlet {
 		boolean isTrue;
 		
 		iAdminService AdminService = new AdminServiceImpl();
-		isTrue = AdminService.updateProducts(id, name, cat, brand, price, qty, dis);
-		System.out.println("admin update:"+isTrue);
 		
+		// Call a method to add a product to the items database
+		isTrue = AdminService.updateProducts(id, name, cat, brand, price, qty, dis);
+		System.out.println("admin updatess:"+isTrue);
+		
+		//Redirect to the AdminDashboard.jsp when successfully added
 		if(isTrue == true) {
 			response.sendRedirect("AdminRetrievePServlet");
 		}
-		else {
-		
-//			List<Items> itemDetails = AdminService.getItemDetails(id);
-//			request.setAttribute("itemDetails", itemDetails);
-			
-			RequestDispatcher req = request.getRequestDispatcher("Items.jsp");
-			req.forward(request, response);
+		else{
+			// If update is unsuccessful, display an error message and redirect back to ItemsServlet
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Item Update Unsucessful! Try Again.');");
+			out.println("location = 'AdminRetrievePServlet'");
+	    	out.println("</script>");
 		}
 	}
 

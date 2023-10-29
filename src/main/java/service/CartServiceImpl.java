@@ -3,11 +3,12 @@ package service;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import home.cart;
+
 import online_grocery.DBconnecter;
 import model.*;
 
@@ -16,9 +17,11 @@ public class CartServiceImpl implements iCartService{
 	private static Connection con = null;
 	private static Statement st = null;
 	private static ResultSet rs  = null;
+	
+	//get all items from database and show in home page
 	@Override
 	public boolean getItems(int itemId, int quentity, String userID) {
-		// TODO Auto-generated method stub
+
 		boolean isSucces = false;
 		String ItemName = "";
 		int Tprice = 0;
@@ -26,7 +29,7 @@ public class CartServiceImpl implements iCartService{
 		try {
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
-	        // Select the item's details
+
 	        String sql = "SELECT Name, Unitprice FROM itemnew WHERE ID = " + itemId;
 	        rs = st.executeQuery(sql);
 			
@@ -56,15 +59,15 @@ public class CartServiceImpl implements iCartService{
 
 		}
 		catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 		return isSucces;
 	}
-
+//show cart item details
 	@Override
 	public List<Cart> getCartDetails(String username) {
-		// TODO Auto-generated method stub
+
 		ArrayList<Cart> cartItems = new ArrayList<>();
 		System.out.println("cart DB:"+username);
 		
@@ -95,15 +98,15 @@ public class CartServiceImpl implements iCartService{
 			}	
 		}
 		catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		return cartItems;
 		
 	}
-
+//delete cart items
 	@Override
 	public void deleteItems(int id) {
-		// TODO Auto-generated method stub
+
 		try {
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
@@ -112,11 +115,11 @@ public class CartServiceImpl implements iCartService{
 			
 		}
 		catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}
-
+//update cart items prices
 	@Override
 	public void updateItems(int id, int qnt,double total,double price) {
 		// TODO Auto-generated method stub
@@ -130,7 +133,7 @@ public class CartServiceImpl implements iCartService{
 			int rs4 = st.executeUpdate(sql4);
 		}
 		catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}
@@ -149,11 +152,26 @@ public class CartServiceImpl implements iCartService{
 	            int price = rs.getInt("Tprice");
 	            totall += price; // Add the price to the total
 	        }
-		}catch(Exception e) {
-			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 		
 		return totall;
 	}
+
+	@Override
+	public boolean checkCart(int id,String uid) {
+		// TODO Auto-generated method stub
+		con = DBconnecter.getConnection();
+		try {
+			st = con.createStatement();
+			String sql = "select * from cart where itemName = '"+id+"'userId = '"+id+"'";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 
 }

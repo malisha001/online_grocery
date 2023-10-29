@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,34 +15,24 @@ import model.Items;
 import service.AdminServiceImpl;
 import service.iAdminService;
 
-/**
- * Servlet implementation class AdminDeletePServlet
- */
 @WebServlet("/AdminDeletePServlet")
 public class AdminDeletePServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public AdminDeletePServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		String id = request.getParameter("delete");
 		
 		boolean isTrue;
@@ -49,15 +40,15 @@ public class AdminDeletePServlet extends HttpServlet {
 		iAdminService AdminService = new AdminServiceImpl();
 		isTrue = AdminService.deleteProducts(id);
 		
+		//Redirect to the ItemsServlet when successfully deleted
 		if(isTrue == true) {
 			response.sendRedirect("AdminRetrievePServlet");
 		}
 		else {
-//			List<Items> iDetails = AdminService.getItemDetails(id);
-//			request.setAttribute("iDetails", iDetails);
-//			
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("Items.jsp");
-//			dispatcher.forward(request, response);
+		    // If deletion is unsuccessful, display an error message and redirect back to ItemsServlet
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Item Delete Unsucessful! Try Again.');");
+			out.println("location = 'ItemsServlet'");
 		}
 	}
 

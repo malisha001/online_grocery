@@ -1,12 +1,8 @@
 /**
  * 
  */
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var defaultTab = document.querySelector('a[href="#report-card"]');
-        defaultTab.click();
-      });
-      
+   //validate phone number
+   
       function validatePhoneNumber(event) {
           var input = event.target;
           input.value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
@@ -16,6 +12,7 @@
           }
       }
       
+      // validate email
       function validateEmail(event) {
           var input = event.target;
           var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,6 +23,7 @@
           }
       }
       
+      // validate password
       function validatePassword(event) {
     var input = event.target;
     var password = input.value;
@@ -36,7 +34,7 @@
         input.value = ''; // Clear the invalid input
     }
 }
-
+    // confirm delete
     function confirmAction() {
     var result = confirm("Are you sure you want to DELETE your Account ?");
     if (result) {
@@ -48,17 +46,21 @@
         alert("Action cancelled.");
     }
   }
-    function confirmUpdate() {
-    var result = confirm("Are you sure you want to Update your Account ?");
-    if (result) {
-        // User clicked "OK"
-        // Add your action here
+  
+  
+   // confirm update
+     function confirmUpdate() {
+    
         alert("Updated Successfully !!");
-    } else {
-        // User clicked "Cancel" or closed the dialog
-        alert("Action cancelled.");
+     }
+     
+     // create account after re login
+     function createAccount() {
+    
+        alert("Please Re Login !!");
     }
-}
+    
+
 
  
  

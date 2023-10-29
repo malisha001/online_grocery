@@ -87,8 +87,8 @@
         <table width="100%">
             <thead>
                 <tr>
-                    <td>books</td>
-                    <th>product</th>
+                    <td>items</td>
+                    <th></th>
                     <td>price</td>
                     <td>quantity</td>
                     <td>total</td>
@@ -102,7 +102,7 @@
                     <input type="hidden" name="book_id" value="">
                     <tr>
                         <td><p>${cart.itemName}</p></td>
-                        <td><p>tt</p></td>
+                        <td><p></p></td>
                            	<td class="price"><p>${cart.price}</p></td>
                            	 <form action="UpdateCartItemsServlet" method="post">
                             <td><input type="number" name="quantity" value="${cart.quentity}" min="1" class="quantity-input" onchange="calculate(this)"></td>

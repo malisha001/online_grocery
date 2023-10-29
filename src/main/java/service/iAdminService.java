@@ -6,7 +6,7 @@ import model.Items;
 
 public interface iAdminService {
 	//add product
-	public boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String img,String Description );
+	public boolean addproduct(String Name,String Category,String Brand,String UnitPrice,String Quantity,String img,String Description );
 	
 	//update product details
 	public boolean updateProducts(String id,String name, String cat, String brand, String price, String qty, String dis );

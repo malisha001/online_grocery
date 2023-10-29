@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.*;
-import home.items;
+
 import online_grocery.DBconnecter;
 
 public class HomepageServiceImpl implements iHomepageService{
@@ -18,7 +18,6 @@ public class HomepageServiceImpl implements iHomepageService{
 	//show items in homePage
 	@Override
 	public List<Items> getItemDetails() {
-		// TODO Auto-generated method stub
 		ArrayList<Items> item = new ArrayList<>();
 		
 		try {

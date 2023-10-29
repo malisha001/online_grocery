@@ -17,7 +17,7 @@ public class AdminServiceImpl implements iAdminService{
 	
 	//add product method
 	@Override
-	public boolean addproduct(String Name,String Category,String Brand,double UnitPrice,int Quantity,String img,String Description ) {
+	public boolean addproduct(String Name,String Category,String Brand,String UnitPrice,String Quantity,String img,String Description ) {
 		
 		System.out.println("add to items:"+Name);
 		boolean isSuccess = false;
@@ -52,15 +52,12 @@ public class AdminServiceImpl implements iAdminService{
 		System.out.println("admin service:"+brand);
 		boolean isSuccess = false;
 		int idd = Integer.parseInt(id);
-		double prices = Double.parseDouble(price);
-		int qtyy = Integer.parseInt(qty);
-
     	
     	try {
     		
     		con1 = DBconnecter.getConnection();
             stmt1 = con1.createStatement();
-            String sql = "update itemnew set Name='"+name+"',Catergary= '"+cat+"', Brand= '"+brand+"', UnitPrice='"+prices+"', Quantity='"+qtyy+"',Description='"+dis+"' where ID = '"+idd+"'";
+            String sql = "update itemnew set Name='"+name+"',Catergary= '"+cat+"', Brand= '"+brand+"', UnitPrice='"+price+"', Quantity='"+qty+"',Description='"+dis+"' where ID = '"+idd+"'";
             System.out.println(name);
             int rs = stmt1.executeUpdate(sql);
             System.out.println("admin service:"+name);
@@ -129,8 +126,8 @@ public class AdminServiceImpl implements iAdminService{
                 String Brand = resultSet.getString(4);
                 double UnitPrice = resultSet.getDouble(5);
                 int Quantity = resultSet.getInt(6);
-                String Description = resultSet.getString(7);
-                String img = resultSet.getString(8);
+                String Description = resultSet.getString(8);
+                String img = resultSet.getString(7);
                 
                 
                 Items i = new Items(ID, Name, Category, Brand, UnitPrice, Quantity, Description,img);

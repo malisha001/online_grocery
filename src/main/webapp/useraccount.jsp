@@ -27,7 +27,7 @@
         <c:set var="phone" value="${cus.phonenumber}"/>
         <c:set var="password" value="${cus.password}"/>
 
-        <h2>User Profile</h2>
+        <h2><i><b>USER PROFILE</b></i></h2>
         
         <div class="main-card">
             <ul>

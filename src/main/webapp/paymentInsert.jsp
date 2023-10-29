@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment</title>
     <link rel="stylesheet" href="css/paymentstyle.css">
+    <script src="js/customerJavaScript.js"></script>
   </head>
   <body>
   <%String total = request.getParameter("total"); %>
     <div class="payment-method">
-      <h2>Online Payment Method</h2>
+      <h2><i></i><b>PAYMENT METHOD</b></h2>
       <div class="container-payment">
       
-        <form action="insert" method="post">
+        <form action="PaymentServlet" method="post">
           <div class="row">
             <div class="col">
               <h3 class="title-address">Billing address</h3>
@@ -37,6 +38,7 @@
                   type="text"
                   id="fullname"
                   name="fullname"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -46,6 +48,8 @@
                   type="text"
                   id="email"
                   name="email"
+                  onblur="validateEmail(event)"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -55,6 +59,7 @@
                   type="text"
                   id="address"
                   name="address"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -64,6 +69,7 @@
                   type="text"
                   id="city"
                   name="city"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -73,6 +79,7 @@
                   type="text"
                   id="zip-code"
                   name="zip-code"
+                  required
                 />
               </div>
             </div>
@@ -82,7 +89,7 @@
   
               <div class="address-label">
                 <label for="cards-accepted">Cards Accepted:</label>
-                <img src="Payment_Options.jpg" alt="Payment"/>
+                <img src="paymentsss.jpg" alt="Payment"/>
               </div>
               <div class="address-label">
                 <label for="name-on-card">Name on Card:</label>
@@ -91,6 +98,7 @@
                   type="text"
                   id="name-on-card"
                   name="name-on-card"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -101,6 +109,7 @@
                   id="credit-card-number"
                   name="credit-card-number"
                   placeholder="xxxx-xxxx-xxxx-xxxx"
+                  required
                 />
               </div>
               <div class="address-label">
@@ -110,6 +119,7 @@
                   type="text"
                   id="exp-month"
                   name="exp-month"
+                  required
                 />
               </div>
               <div class="flex-label">
@@ -120,6 +130,7 @@
                     type="text"
                     id="exp-year"
                     name="exp-year"
+                    required
                   />
                 </div>
               </div>
@@ -130,7 +141,8 @@
                   type="text"
                   id="cvv"
                   name="cvv"
-                  placeholder="1234"
+                  placeholder="123"
+                  required
                 />
               </div>
             </div>
