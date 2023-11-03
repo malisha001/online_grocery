@@ -12,7 +12,7 @@
       
 </head>
 <body>
-    <h2>User Profile</h2>
+    <h2><i><b>USER PROFILE</b></i></h2>
 
     <div class="main-card">
         <ul>

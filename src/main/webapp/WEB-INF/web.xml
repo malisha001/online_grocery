@@ -50,19 +50,11 @@
        </servlet-mapping>
        
        
-       <servlet>
-                <servlet-name>AddProductsServlet</servlet-name>
-                <servlet-class>com.admin.AddProductsServlet</servlet-class>
-       </servlet>
-       <servlet-mapping>
-               <servlet-name>AddProductsServlet</servlet-name>
-               <url-pattern>/insert</url-pattern>
-               
-       </servlet-mapping>
+
        
         <servlet>
                 <servlet-name>ItemList</servlet-name>
-                <servlet-class>com.admin.ItemsServlet</servlet-class>
+                <servlet-class>servlet.AdminRetrievePServlet</servlet-class>
        </servlet>
        <servlet-mapping>
                <servlet-name>ItemList</servlet-name>

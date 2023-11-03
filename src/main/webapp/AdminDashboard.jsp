@@ -30,6 +30,12 @@
 </style>
 </head>
 <body>
+	<%
+	
+	if(session.getAttribute("username")==null){
+		response.sendRedirect("loginNew.jsp");
+	}
+	%>
 <!-- header section -->
     <header>
         <div class="header-1">
@@ -67,7 +73,7 @@
                     <div class="subb-men">
                         <div class="user-info">
                             <img src="image/user.png" alt="">
-                            <h2>malisha</h2>
+                            <h2>${username}</h2>
                         </div>
                         <hr>
                         <a href="#" class="subb-men-linkk">
@@ -75,7 +81,7 @@
                             <p>setting</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="subb-men-linkk">
+                        <a href="${pageContext.request.contextPath}/LogoutServlet" class="subb-men-linkk">
                             <img src="image/logout.png" alt="">
                             <p>log out</p>
                             <span>></span>
@@ -102,7 +108,7 @@
             <h3 class="my-5" style="text-align: center">Admin Panel</h3>
             <div class="profile-pic mt-5">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-bASq_TMp6SDNjUmz89fWJ4rpWc68W5P9JdzPIxrcg3OKMgYJLZM9q0M22_jxemTE_E&usqp=CAU"
-                     alt="Profile Pic">
+                     alt="Profile Pic" style="border-radius: 50%;">
             </div>
             <div class="fs-3 p-5 fw-bold" style="text-align: center">
                 <c:forEach var="admin" items="${adminDetails}">
@@ -113,9 +119,7 @@
             <ul class="nav nav-pills flex-column mb-auto fs-4 px-5 d-grid gap-2">
                 <li class="nav-item">
                     <a href="#" class="nav-link active"  style="background-color: #27ae60" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
-                        </svg>
+                        
                         Dashboard
                     </a>
                 </li>
@@ -158,23 +162,45 @@
 
                     <div class="d-grid gap-2 d-md-flex justify-content-between">
                      <div id="add-product" class="add-product">
-	    <form action = "insert" method = "post">
+	    <form action = "AdminAddProductsServlet" method = "post">
 	           <fieldset>
 	                     <legend>Add New Product</legend>
 	                             
-	                              <label for ="name">Product Name</label><input type ="text" name = "Name"><br>
-	                              <label for ="cat">Category </label>
-	                                         <select id ="cat" name = "Category">
-	                                                <option value= "dairy">Dairy</option>
-	                                                <option value= "Fruits">Fruits</option>
-	                                                <option value= "Vegetables">Vegetables</option>
-	                                                <option value= "Bakery">Bakery</option>
-	                                                <option value= "Rice">Rice</option>                               
-	                                         </select><br>
-	                             <label for ="brand">Brand Name </label><input type ="text" name = "Brand"><br>
-	                             <label for ="price">Unit Price </label><input type ="text" name = "UnitPrice"><br>
-	                             <label for ="qty">Quantity </label><input type ="text" name = "Quantity"><br>
-	                             <label for ="description">Description</label> <br><textarea rows= "5" cols="20" name = "Description"></textarea><br><br>
+                         <table style="width:100%">
+                            <tr style="height:60px">
+                            <td><label for ="name">Product Name</label></td>
+                            <td><input type ="text" name = "Name" required></td>
+                            </tr>
+                            <tr style="height:60px">
+                            <td><label for ="cat">Category </label></td>
+                            <td><select id ="cat" name = "Category">
+                                                        <option value= "dairy">Dairy</option>
+                                                        <option value= "Fruits">Fruits</option>
+                                                        <option value= "Vegetables">Vegetables</option>
+                                                        <option value= "Bakery">Bakery</option>
+                                                        <option value= "Rice">Rice</option>                               
+                                                 </select></td>
+                            </tr>
+                            <tr style="height:60px">
+                            <td><label for ="brand">Brand Name </label></td>
+                            <td><input type ="text" name = "Brand" required></td>
+                            </tr>
+                            <tr style="height:60px">
+                            <td> <label for ="price">Unit Price </label></td>
+                            <td><input type ="text" name = "UnitPrice" required></td><br><br>
+                            </tr>
+                            <tr style="height:60px">
+                            <td><label for ="qty">Quantity </label></td>
+                            <td><input type ="text" name = "Quantity" required></td>
+                            </tr>
+                            <tr style="height:60px">
+                            <td><label for ="description">Description</label></td>
+                            <td><textarea rows= "2" cols="20" name = "Description"></textarea></td>
+                            </tr>
+                            
+                            
+                            
+                        </table>
 	                             <input type ="submit" value ="Add Product">
 	                             <button type="button" id="hide-form" onclick="hide()">Cancel</button>
 	          </fieldset>

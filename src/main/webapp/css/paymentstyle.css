@@ -1,0 +1,104 @@
+@charset "ISO-8859-1";
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    border-radius: 10px; 
+}
+.payment-method {
+    width: 1000px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.container-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    min-height: 100vh; 
+    background: transparent;
+    padding-bottom: 0px;
+}
+.container-payment form {
+    padding: 20px;
+    width: 850px;
+    background: rgb(209, 238, 253);
+}
+.container-payment form .row {
+display: flex;
+flex-wrap: wrap;
+gap:15px; 
+}
+.container-payment form .row .col {
+    flex: 1 1 250px; 
+    margin-left: 20px;
+
+}
+.container-payment form .row .col .title-address {
+    font-size: 20px;
+    color: #333;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.container-payment form .row .col .address-label {
+    margin: 10px 0;   
+}
+.container-payment form .row .col .address-label label{
+    margin-bottom: 10px;
+    display: block;
+}
+.container-payment form .row .col .address-label input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 15px;
+    text-transform: none;
+}
+.container-payment form .row .col .address-label input:focus {
+  border: 1px solid rgb(0, 47, 255);  
+}
+.container-payment form .row .col .flex {
+    display: flex;
+    gap: 15px;
+}
+.container-payment form .row .col .flex .address-label {
+    margin-top: 5px;
+}
+.container-payment form .row .col .address-label img {
+    height: 60px;
+    width: auto;
+    margin-top: 5px;
+}
+ .submit-payment {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    background:rgb(63, 168, 221);
+    color: white;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+
+.title-address {
+    text-align: center;
+    padding: 0px;
+   
+}
+#card-icons-label {
+    width: 1000px;
+}
+
+.submit-payment:hover {
+    background-color: rgb(12, 148, 216);
+
+}
+
+
+
+

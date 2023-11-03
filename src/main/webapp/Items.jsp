@@ -24,16 +24,16 @@
                      alt="Profile Pic">
             </div>
             <div class="fs-3 p-5 fw-bold" style="text-align: center">
-                <c:forEach var="admin" items="${adminDetails}">
+                <%--<c:forEach var="admin" items="${adminDetails}">
                     ${admin.name}<br/>
                     ${admin.email}<br/>
-                </c:forEach>
+                </c:forEach>--%>
             </div>
             <ul class="nav nav-pills flex-column mb-auto fs-4 px-5 d-grid gap-2">
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white" >
                         <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
+                            <a href="AdminDashboard.jsp"></a>
                         </svg>
                         Dashboard
                     </a>
@@ -196,14 +196,12 @@
                                 </form>
                             </td>
                         </tr>--%>
-
                         <c:forEach items="${items}" var="item">
-
                             <c:set var = "id" value = "${item.id}"/>
                             <c:set var = "name" value = "${item.name}"/>
-                            <c:set var = "category" value = "${item.category}"/>
+                            <c:set var = "category" value = "${item.catergories}"/>
                             <c:set var = "brand" value = "${item.brand}"/>
-                            <c:set var = "price" value = "${item.unitPrice}"/>
+                            <c:set var = "price" value = "${item.price}"/>
                             <c:set var = "qty" value = "${item.quantity}"/>
                             <c:set var = "description" value = "${item.description}"/>
 
@@ -220,9 +218,9 @@
                             <tr>
                                 <td>${item.id}</td>
                                 <td>${item.name}</td>
-                                <td>${item.category}</td>
+                                <td>${item.catergories}</td>
                                 <td>${item.brand}</td>
-                                <td>${item.unitPrice}</td>
+                                <td>${item.price}</td>
                                 <td>${item.quantity}</td>
                                 <td>${item.description}</td>
                                 <td style="display: flex; justify-content: space-evenly;">
@@ -233,7 +231,7 @@
                                                 class="uil uil-edit"></i></button>
                                     </form>
 
-                                    <form action="DeleteItemServlet" method="post">
+                                    <form action="AdminDeletePServlet" method="post">
                                         <input type="hidden" name="delete" value="${item.id}">
                                         <button type="submit" class="btn btn-danger"><i
                                                 class="uil uil-trash-alt" style="font-size: 15px"></i></button>

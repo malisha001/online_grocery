@@ -29,7 +29,7 @@ html{
 
 
 .sidebar {
-    height: 100vh;
+    height: 131vh;
     overflow-y: auto;
 }
 
@@ -75,13 +75,15 @@ html{
     display: flex;
     position: absolute;
     bottom: 0;
-    width: 230px;
+    width: 179px;
     justify-content: center;
+    height: 152px;
 }
 
 .sidebar-footer > a {
     text-decoration: none;
     color: #27ae60;
+
 }
 
 .card-background{

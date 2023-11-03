@@ -17,41 +17,47 @@ public class CustomerServiceImpl implements iCustomerService{
 	
 	//validate customer
 	@Override
-	public boolean validate(String userN, String passw) {
-		// TODO Auto-generated method stub
-		boolean result = false;
+	public char validate(String userN, String passw) {
+		
+		boolean result;
+		char log = 'b';
 		try {
 			con = DBconnecter.getConnection();
 			st = con.createStatement();
 			
-			System.out.println(userN);
-			
 			String sql = "SELECT * FROM customerprofile WHERE email = '" + userN + "' AND password = '" + passw + "'";
+			String sql1 = "SELECT * FROM admin WHERE email = '" + userN + "' AND password = '" + passw + "'";
 			
 			rs = st.executeQuery(sql);
-			result  = rs.next();
+		    result = rs.next();
+
+		    if (result) {
+		        log = 'c'; // Set log to 'c' for customer authentication
+		    } else {
+		        rs = st.executeQuery(sql1);
+		        result = rs.next();
+		        if (result) {
+		            log = 'a'; // Set log to 'a' for admin authentication
+		        }
+		    }
 		}
 		catch(Exception e) {
-			
+			   e.printStackTrace();
 		}
-		System.out.println(result);
-		return result;
+		return log;	
 	}
 	
 	//retrieve customer details
 	@Override
 	public List<Customer> getcustomerprofile(String userN) {
-//		   int convertedID = Integer.parseInt(Id);
-		System.out.println("im now getconncetion dbutil :" + userN);
 		   ArrayList<Customer> cus = new ArrayList<>();
 		   
 		   try {
 			   con = DBconnecter.getConnection();
 			   st = con.createStatement();
 			   String sql = "select * from customerprofile where Email='"+userN+"'";
-//			   System.out.println("delete phone"+ Id);
 			   rs = st.executeQuery(sql);
-			   System.out.println("customerS");
+
 			   while(rs.next()) {
 				   int id = rs.getInt(1);
 				   String fname = rs.getString(2);
@@ -60,11 +66,15 @@ public class CustomerServiceImpl implements iCustomerService{
 				   String phone = rs.getString(5);
 				   String password = rs.getString(6);
 				   
-				   System.out.println("im now getconncetion dbutil :" + fname);
-				   Customer c = new Customer(id, fname, lname, email, phone, password);
+				   Customer c = Customer.getInstance();
+				   c.setFirstname(fname);
+				   c.setLastname(lname);
+				   c.setId(id);
+				   c.setEmail(email);
+				   c.setPhonenumber(phone);
+				   c.setPassword(password);
 				   cus.add(c);
-			   }
-			   
+			   }   
 		   }
 		   catch(Exception e) {
 			   e.printStackTrace();
@@ -76,13 +86,11 @@ public class CustomerServiceImpl implements iCustomerService{
 	public boolean deleteCustomer(String email) {
 boolean IsSuccess = false;
     	
-//    	int convId = Integer.parseInt(id);
-    	
     	try {
     		con = DBconnecter.getConnection();
 			st = con.createStatement();
     		String sql = "delete from customerprofile where Email= '"+email+"'";
-    		System.out.println("delete"+ email);
+
     		int r = st.executeUpdate(sql);
     		
     		if (r > 0) {
@@ -103,7 +111,6 @@ boolean IsSuccess = false;
 	@Override
 	public boolean Updatecustomer(String id, String fname, String lname, String email, String phone, String password) {
 boolean isCorrect = false;
-    	
     	try {
     		con = DBconnecter.getConnection();
     		st = con.createStatement();
@@ -128,7 +135,6 @@ boolean isCorrect = false;
 
 	@Override
 	public boolean customerReport(String customerName, String customerEmail, String phonenumber, String about) {
-		// TODO Auto-generated method stub
 		boolean isCorrect = false;
 		 
 		 try {
@@ -172,6 +178,31 @@ boolean isCorrect = false;
    		 e.printStackTrace();
    	 }
    	 return isCorrect;
+	}
+
+	@Override
+	public boolean insertpayment(String fname, String email, String address, String city, String zip, String cardName,
+			String cardNo, String expM, String expY, String cvv) {
+		boolean isCorrect = false;
+		 
+		 try {
+			con = DBconnecter.getConnection();
+			st = con.createStatement();
+	         String sql = "insert into new_table values(0,'"+fname+"', '"+email+"', '"+address+"', '"+city+"', '"+zip+"', '"+cardName+"','"+cardNo+"', '"+expM+"','"+expY+"', '"+cvv+"')";
+			 int rs = st.executeUpdate(sql);
+			 
+			 if(rs > 0) {
+				 isCorrect =true;
+			 }
+			 else {
+				 isCorrect = false;
+			 }
+		 }
+		 catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 return isCorrect;
+
 	}
 
 }

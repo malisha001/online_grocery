@@ -26,10 +26,7 @@
                      alt="Profile Pic">
             </div>
             <div class="fs-3 p-5 fw-bold" style="text-align: center">
-                <c:forEach var="admin" items="${adminDetails}">
-                    ${admin.name}<br/>
-                    ${admin.email}<br/>
-                </c:forEach>
+
             </div>
             <ul class="nav nav-pills flex-column mb-auto fs-4 px-5 d-grid gap-2">
                 <li class="nav-item">
@@ -86,7 +83,7 @@
 	
 	<div class="col-md-10 py-4" style="background-color: #f5f5f5">
             <div class="row justify-content-center border-0 rounded-3 shadow-sm bg-body rounded p-4 mt-5 bg-green">
-				<form action = "update" method = "post">
+				<form action = "AdminUpdatePServlet" method = "post">
 				
 					<table style="width:50%">
 						<tr style="height:60px">
@@ -95,27 +92,27 @@
 						</tr>
 						<tr style="height:60px">
 						<td>Item Name</td>
-						<td><input type = "text" name= "name" value = "<%= name%>"></td>
+						<td><input type = "text" name= "name" value = "<%= name%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Category</td>
-						<td><input type = "text" name= "cat" value = "<%= category%>"></td>
+						<td><input type = "text" name= "cat" value = "<%= category%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Brand</td>
-						<td><input type = "text" name= "brand" value = "<%= brand%>"></td><br><br>
+						<td><input type = "text" name= "brand" value = "<%= brand%>" required></td><br><br>
 						</tr>
 						<tr style="height:60px">
 						<td>Unit Price</td>
-						<td><input type = "text" name= "price" value = "<%= price%>"></td>
+						<td><input type = "text" name= "price" value = "<%= price%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Quantity</td>
-						<td><input type = "text" name= "qty" value = "<%= qty%>"></td>
+						<td><input type = "text" name= "qty" value = "<%= qty%>" required></td>
 						</tr>
 						<tr style="height:60px">
 						<td>Description</td>
-						<td><input type = "text" name= "dis" value = "<%= description%>"></td>
+						<td><input type = "text" name= "dis" value = "<%= description%>" required></td>
 						</tr>
 						
 						

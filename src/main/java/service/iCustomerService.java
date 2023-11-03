@@ -9,7 +9,7 @@ public interface iCustomerService {
 	public boolean insertaccount(String fname, String lname,String email, String phone, String password);
 	
 	//validate customer
-	public boolean validate(String userN,String passw);
+	public char validate(String userN,String passw);
 	
 	//get user details
 	public List<Customer> getcustomerprofile(String userN);
@@ -22,4 +22,7 @@ public interface iCustomerService {
 	
 	//report customer issue(insert)
 	public boolean customerReport(String customerName, String customerEmail,String phonenumber, String about);
+	
+	//get payment details
+	public boolean insertpayment(String fname, String email, String address, String city, String zip, String cardName, String cardNo, String expM, String expY, String cvv);
 }

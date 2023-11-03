@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.CartDB;
+
 import service.CartServiceImpl;
 import service.iCartService;
 
@@ -41,13 +41,17 @@ public class UpdateCartItemsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("uitemId"));
 		int qnt = Integer.parseInt(request.getParameter("quantity"));
-		double total = Double.parseDouble(request.getParameter("quantity"));
-		
-		System.out.println("new:"+id);
-		System.out.println(qnt);
+		double total = Double.parseDouble(request.getParameter("total"));
+		double price = Double.parseDouble(request.getParameter("price"));
+		String email = request.getParameter("uitemId");
+		System.out.println("total:"+total);
+
 		
 		iCartService cartService = new CartServiceImpl();
-		cartService.updateItems(id,qnt,total);
+		
+		cartService.calculate(email);
+		cartService.updateItems(id,qnt,total,price);
+		
 		response.sendRedirect("cart.jsp");
 	}
 

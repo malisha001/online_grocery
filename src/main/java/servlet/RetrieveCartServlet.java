@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import home.CartDB;
-import home.cart;
 import service.*;
 import model.*;
 
@@ -29,7 +27,7 @@ public class RetrieveCartServlet extends HttpServlet {
 		// Call the getCartDetails method to retrieve the user's cart
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
-		System.out.println("newswevlet:"+username);
+		System.out.println("newswevletTTTTTTTTTTT:");
 		
 		try {
 			List<Cart>cartDetails = cartService.getCartDetails(username);

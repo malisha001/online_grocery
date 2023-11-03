@@ -52,7 +52,7 @@
                 <label for="password">Username:</label>
                 <input class="input-label-form" type="text" id="username" name="username" value="<%= userName%>" required /><br /><br />
 
-                <input class="submit-label-form" type="submit" onclick="confirmUpdate()" value="Update" />
+                <input class="submit-label-form" type="submit" onclick="confirmUpdate()"  value="Update" />
             </form>
        
         </div>

@@ -2,7 +2,7 @@ package service;
 
 import java.util.List;
 
-import home.cart;
+
 import model.Cart;
 
 public interface iCartService {
@@ -18,6 +18,11 @@ public interface iCartService {
 	public void deleteItems(int id);
 	
 //update quantity of items in cart
-	public void updateItems(int id,int qnt,double total);
+	public void updateItems(int id,int qnt,double total,double price);
 	
+// calculate cart
+	public int calculate(String mail);
+	
+//check cart
+	public boolean checkCart(int id,String uid);
 }
