@@ -3,11 +3,11 @@
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;  /*look mean of this */
+    box-sizing: border-box; 
     outline: none;
     border: none;
     text-transform: capitalize;
-    border-radius: 10px; /*look mean of this */
+    border-radius: 10px; 
 }
 .payment-method {
     width: 1000px;
@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-    min-height: 100vh; /*look mean of this */
+    min-height: 100vh; 
     background: transparent;
     padding-bottom: 0px;
 }
@@ -32,10 +32,10 @@
 .container-payment form .row {
 display: flex;
 flex-wrap: wrap;
-gap:15px; /*look mean of gap */
+gap:15px; 
 }
 .container-payment form .row .col {
-    flex: 1 1 250px; /*look mean of this */
+    flex: 1 1 250px; 
     margin-left: 20px;
 
 }
@@ -59,7 +59,7 @@ gap:15px; /*look mean of gap */
     font-size: 15px;
     text-transform: none;
 }
-.container-payment form .row .col .address-label input:focus  /*look mean of focus */{
+.container-payment form .row .col .address-label input:focus {
   border: 1px solid rgb(0, 47, 255);  
 }
 .container-payment form .row .col .flex {
@@ -83,9 +83,7 @@ gap:15px; /*look mean of gap */
     margin-top: 5px;
     cursor: pointer;
 }
-/* .submit-payment a:hover {
-    background-color: yellowgreen;
-} */
+
 
 .title-address {
     text-align: center;

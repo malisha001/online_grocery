@@ -14,17 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import model.Policy;
 import service.PolicyDAO;
 
-@WebServlet("/")
-public class PolicyServlet1 extends HttpServlet {
+/**
+ * Servlet implementation class pocilyServlet
+ */
+@WebServlet("/pocilyServlet")
+public class pocilyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PolicyDAO policyDAO;
-    
-    public PolicyServlet1() {
-       this.policyDAO = new PolicyDAO();
+       
+
+    public pocilyServlet() {
+    	this.policyDAO = new PolicyDAO();
+
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 String action = request.getServletPath();
 		
 		try{
@@ -51,21 +56,24 @@ String action = request.getServletPath();
 				listPolicy(request,response);			
 				break;
 			}
-		}catch(SQLException | IOException e) {
-				e.printStackTrace();
 		}catch(ServletException e) {
 				e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
+	
 
 	private void listPolicy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Policy> listPolicy = policyDAO.selectAllPolicy();
 		request.setAttribute("listPolicy", listPolicy);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("policy-list.jsp");
-		dispatcher.forward(request, response);	
-		// TODO Auto-generated method stub
+		dispatcher.forward(request, response);
 		
 	}
+
+
 	private void updatePolicy(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String policytype = request.getParameter("policytype");
@@ -81,16 +89,19 @@ String action = request.getServletPath();
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Policy existingPolicy = policyDAO.selectPolicy(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("policy-form.jsp");
 		request.setAttribute("policy", existingPolicy);
 		dispatcher.forward(request, response);
-		// TODO Auto-generated method stub
 		
 	}
-	private void deletePolicy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
+
+	private void deletePolicy(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
 		String idParam = request.getParameter("id");
 	    if (idParam != null && !idParam.isEmpty()) {
 	        try {
@@ -111,13 +122,18 @@ String action = request.getServletPath();
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	private void displayErrorPage(String errorMessage, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// TODO Auto-generated method stub
 	    request.setAttribute("errorMessage", errorMessage);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("Error.jsp"); // Create an error JSP page
 	    dispatcher.forward(request, response);
 		
 	}
+
+
 	private void insertPolicy(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		String policytype = request.getParameter("policytype");
 		String description = request.getParameter("description");
@@ -130,20 +146,19 @@ String action = request.getServletPath();
 				request.getSession().setAttribute("successMessage", "Policy successfully added");
 	       
 				response.sendRedirect("list");
-		// TODO Auto-generated method stub
 		
 	}
+
+
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request.getRequestDispatcher("policy-form.jsp");
 		dispatcher.forward(request, response);
 		
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

@@ -62,7 +62,7 @@
                     <br/><br/>
                 
                 
-                <!-- Update button moved inside form-card -->
+
                 <div class="update-button">
                     <c:url value="Updatecustomer.jsp" var="cusupdate">
                         <c:param name="id" value="${id}"/>
@@ -81,8 +81,6 @@
               </form>
             </div>
             
-            <!-- Move delete-account section inside form-card -->
-           <!-- ... Your existing code ... -->
 
              <div class="delete-account section" id="delete-account">
                  <form action="CustomerDeleteServlet" method="post">
@@ -95,7 +93,7 @@
                   </form>
              </div>
 
-<!-- ... Your existing code ... -->
+
 
         
     </c:forEach>
