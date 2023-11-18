@@ -1,4 +1,3 @@
-<%@page import="home.cart"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -80,8 +79,7 @@
 	if(session.getAttribute("username")==null){
 		response.sendRedirect("LoginPage.jsp");
 	}	
-	List<cart>cartDetails = (List<cart>)request.getAttribute("cartDetails");
-	System.out.println(cartDetails);
+
 	%>
 	<div class="section-p1" id="cart">
         <table width="100%">
