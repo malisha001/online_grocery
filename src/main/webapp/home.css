@@ -98,6 +98,23 @@ section{
 .header-1 .search-boxx-cont label:hover{
     background: var(--black);
 }
+/* nav bar start */
+/* dropdonw content */
+.header-2 .dropdown-content {
+    position: absolute;
+    top: 100%; /* Adjust this value as needed */
+    left: 0;
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.header-2 .dropdown:hover .dropdown-content {
+    display: block;
+}
+/* dropdown content end */
 .header-2{
     background: #fff;
     display: flex;
@@ -108,16 +125,20 @@ section{
     position: relative;
     z-index: 1; /* Set a z-index value */
 }
-.header-2 .navbar a{
+.header-2 .navbar a {
     padding: .5rem 1.5rem;
     font-size: 2rem;
     border-radius: 0.5rem;
     color: var(--black);
+    display: inline-block;
+    transition: transform 0.3s ease-in-out; /* Add this line for a smooth transition effect */
 }
-.header-2 .navbar a:hover{
-    background: var(--green);
-    color: #fff;
+
+.header-2 .navbar a:hover {
+    color: var(--green); /* Change color on hover */
+    transform: translateY(-5px); /* Adjust this value as needed for the "pop-up" effect */
 }
+
 .header-2 .icons a{
     font-size: 2.5rem;
     color: var(--black);
@@ -339,7 +360,7 @@ section{
     flex-wrap: nowrap;
 }
 .home .image{
-    flex: 1 1 40rem;
+    flex: 1 0 63rem;
     padding-top: 5rem;
 }
 .home .image img{
@@ -379,7 +400,7 @@ section{
     gap: 1.5rem;
     justify-content: center;
 }
-.product .boxx-cont .boxx{
+.product .boxx-cont .boxx {
     flex: 1 1 30rem;
     text-align: center;
     padding: 2rem;
@@ -387,9 +408,10 @@ section{
     border-radius: .5rem;
     overflow: hidden;
     position: relative;
+    transition: box-shadow 0.3s ease-in-out; /* Add box-shadow transition */
 }
-.product .boxx-cont.boxx.img{
-    margin: 5rem 0;
+.product .boxx-cont .boxx:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add box-shadow on hover for a subtle effect */
 }
 .product .boxx-cont .boxx .discount{
     position: absolute;
@@ -447,8 +469,19 @@ section{
     padding: 0.4rem;
     background: rgba(0, 0, 0, .05);
 }
-.product .boxx-cont .boxx .buttn{
+.product .boxx-cont .boxx .buttn {
     display: block;
+    margin-top: 1rem; /* Adjust margin as needed */
+    background: var(--green);
+    color: #fff;
+    padding: .8rem 1.5rem; /* Adjust padding as needed */
+    font-size: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+    width: 100%; /* Make the button width 100% */
+}
+.product .boxx-cont .boxx .buttn:hover {
+    background: var(--black);
 }
 
 /* start footer */
