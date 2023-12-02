@@ -1,4 +1,10 @@
 # online_grocery
 
-main functions
-  *registration and login
+## main functions
+
+-loging and registraion page
+-admin dashbord
+-cart
+-payment page
+-user profile
+
