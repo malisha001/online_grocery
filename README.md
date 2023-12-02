@@ -15,3 +15,4 @@
 
 
 # DEMO
+![Screenshot 2023-12-02 222946](https://github.com/malisha001/online_grocery/assets/121741613/c6026205-1d5f-4c39-9537-494e84c0e1a6)
