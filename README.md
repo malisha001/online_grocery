@@ -2,9 +2,9 @@
 
 ## main functions
 
--loging and registraion page
--admin dashbord
--cart
--payment page
--user profile
+- loging and registraion page
+- admin dashbord
+- cart
+- payment page
+- user profile
 
