@@ -10,7 +10,7 @@
 
 ## technologies
 - HTML,css,javascript use for frondend and rendering by jsp fils.
-- we use java programming language for back end. All CRUD operations has been used
+- we use java programming language for back end
 - mysql database use for store database
 
 
