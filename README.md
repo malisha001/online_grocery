@@ -1,4 +1,4 @@
 # online_grocery
 
-#main functions
+main functions
   *registration and login
